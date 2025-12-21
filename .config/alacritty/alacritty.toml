@@ -38,3 +38,8 @@ lines = 30
 [window.padding]
 x = 2
 y = 2
+
+[general]
+import = [
+    "~/.config/alacritty/keybindings.toml",
+]

@@ -104,14 +104,16 @@ require("lazy").setup({
   -- treesitter
   {
     "nvim-treesitter/nvim-treesitter",
+    lazy = false,
     build = ":TSUpdate",
-    dependencies = {
-      "JoosepAlviste/nvim-ts-context-commentstring",
-    },
   },
-  "nvim-treesitter/playground",
+
   "nvim-treesitter/nvim-treesitter-context",
-  "nvim-treesitter/nvim-treesitter-textobjects",
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
+  },
+  "JoosepAlviste/nvim-ts-context-commentstring",
 
   -- git
   "lewis6991/gitsigns.nvim",
@@ -123,7 +125,7 @@ require("lazy").setup({
 
   -- file info
   "nvim-lualine/lualine.nvim",
-  "simrat39/symbols-outline.nvim",
+  "hedyhli/outline.nvim",
 
   -- edit
   {

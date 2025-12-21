@@ -44,7 +44,7 @@ end
 # dotfiles
 alias dotfiles "git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 if type -q lazygit
-  alias dotfileslg "lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+  alias lzdot "lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 end
 
 stty discard undef

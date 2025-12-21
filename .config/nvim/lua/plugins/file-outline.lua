@@ -1,4 +1,3 @@
-local symbols_outline = require "symbols-outline"
 local opts = {
   highlight_hovered_item = true,
   show_guides = true,
@@ -63,4 +62,4 @@ local opts = {
   },
 }
 
-symbols_outline.setup(opts)
+-- symbols_outline.setup(opts)

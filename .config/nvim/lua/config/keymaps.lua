@@ -83,7 +83,7 @@ vim.keymap.set({ "n", "v", "i" }, "<Del>", "<Nop>", opts_desc()) -- disable <Del
 vim.keymap.set("n", "<leader>e", toggle_mini_files, opts_desc("Files Explorer"))
 vim.keymap.set('n', "<leader>f", fzf_lua.files, opts_desc("Find Files"))
 vim.keymap.set('n', "<leader>b", fzf_lua.buffers, opts_desc("Buffers"))
-vim.keymap.set('n', "<leader>a", "<cmd>SymbolsOutline<cr>", opts_desc("File Outline"))
+vim.keymap.set('n', "<leader>o", "<cmd>Outline<cr>", opts_desc("File Outline"))
 vim.keymap.set('n', '<leader>F', function() fzf_lua.live_grep(fzf_lua_opts.live_grep) end, { nowait = true, noremap = true, desc = 'Find Text' })
 -- vim.keymap.set('n', "<leader>/", mini_comment.toggle_lines, opts_desc("Comment"))
 

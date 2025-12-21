@@ -321,9 +321,9 @@ local opts = {
     -- default options are controlled by 'fd|rg|find|_opts'
     -- NOTE: 'find -printf' requires GNU find
     -- cmd            = "find . -type f -printf '%P\n'",
-    find_opts              = [[-type f -not -path '*/\.git/*' -printf '%P\n']],
-    rg_opts                = [[--color=never --files --hidden --follow -g "!.git"]],
     fd_opts                = [[--color=never --type f --hidden --follow ]] .. fd_exclude,
+    rg_opts                = [[--color=never --files --hidden --follow -g "!.git"]],
+    find_opts              = [[-type f -not -path '*/\.git/*' -printf '%P\n']],
     -- by default, cwd appears in the header only if {opts} contain a cwd
     -- parameter to a different folder than the current working directory
     -- uncomment if you wish to force display of the cwd as part of the
@@ -506,8 +506,8 @@ local opts = {
     -- otherwise auto-detect prioritizes `rg` over `grep`
     -- default options are controlled by 'rg|grep_opts'
     -- cmd            = "rg --vimgrep",
-    grep_opts      = "--binary-files=without-match --line-number --recursive --color=auto --perl-regexp -e",
-    rg_opts        = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
+    rg_opts        = "--column --line-number --no-heading --color=always --smart-case --no-require-git --max-columns=4096 -e",
+    grep_opts      = "--binary-files=without-match --line-number --recursive --color=auto --perl-regexp -e --no-require-git",
     -- set to 'true' to always parse globs in both 'grep' and 'live_grep'
     -- search strings will be split using the 'glob_separator' and translated
     -- to '--iglob=' arguments, requires 'rg'
