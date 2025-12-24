@@ -16,12 +16,30 @@ if [ -f "$LFCD" ]; then
     source "$LFCD"
 fi
 
-alias lf='lfcd'
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+dotfiles() {
+  local git_dir="$HOME/.dotfiles/"
+  local work_tree="$HOME"
 
-if command -v lazygit &> /dev/null; then
-    alias lzdot='lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-fi
-
-alias editdot='GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME nvim $HOME'
-
+  case "$1" in
+    git)
+      shift
+      command git --git-dir="$git_dir" --work-tree="$work_tree" "$@"
+      ;;
+    lzgit)
+      shift
+      command lazygit --git-dir="$git_dir" --work-tree="$work_tree" "$@"
+      ;;
+    edit)
+      local target_path="$work_tree"
+      if [ -n "$2" ]; then
+        target_path="$2"
+      fi
+      echo "Opening $target_path with dotfiles git context..."
+      GIT_DIR="$git_dir" GIT_WORK_TREE="$work_tree" nvim "$target_path"
+      ;;
+    *)
+      echo "Usage: dotfiles {git|lazygit|edit} [args...]"
+      return 1
+      ;;
+  esac
+}

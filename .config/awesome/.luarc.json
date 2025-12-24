@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+
+  "runtime": {
+    "version": "LuaJIT",
+    "path": [
+      "?.lua",
+      "?/init.lua",
+      "/usr/share/awesome/lib/?.lua",
+      "/usr/share/awesome/lib/?/init.lua"
+    ]
+  },
+
+  "diagnostics": {
+    "globals": [
+      "awesome",
+      "client",
+      "screen",
+      "tag",
+      "root",
+      "mouse",
+      "keygrabber",
+      "drawin"
+    ],
+    "disable": [
+      "lowercase-global",
+      "undefined-global"
+    ]
+  },
+
+  "workspace": {
+    "library": [
+      "/usr/share/awesome/lib"
+    ],
+    "checkThirdParty": false
+  },
+
+  "completion": {
+    "callSnippet": "Replace"
+  },
+
+  "hint": {
+    "enable": true
+  },
+
+  "telemetry": {
+    "enable": false
+  }
+}
+

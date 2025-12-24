@@ -18,7 +18,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
-require('global_variables')
+require('base')
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -53,23 +53,27 @@ beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/theme-old.lua
 require('keybindings.global_keys')
 require('keybindings.client_keys')
 require('keybindings.mouse_bindings')
-require('rules.client_rules')
 
--- bling must after beautiful theme init
-local bling = require('bling')
+-- awful.rules.rules = require('rules.client_rules')
 
--- client.connect_signal("focus", function(c)
---     naughty.notify {
---         title = "Client Info",
---         text = string.format(
---             "Name: %s\nClass: %s\nInstance: %s\nType: %s",
---             c.name or "N/A",
---             c.class or "N/A",
---             c.instance or "N/A",
---             c.type or "N/A"
---         )
---     }
--- end)
+client.connect_signal("focus", function(c)
+    naughty.notify {
+        title = "Client Info",
+        text = string.format(
+            "Name: %s\nClass: %s\nInstance: %s\nType: %s",
+            c.name or "N/A",
+            c.class or "N/A",
+            c.instance or "N/A",
+            c.type or "N/A"
+        )
+    }
+end)
+
+-- Default modkey.
+-- Usually, Mod4 is the key with a logo between Control and Alt.
+-- If you do not like this or do not have such a key,
+-- I suggest you to remap Mod4 to another key using xmodmap or other tools.
+-- However, you can use another modifier like Mod1, but it may interact with others.
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
@@ -89,8 +93,6 @@ awful.layout.layouts = {
     -- awful.layout.suit.corner.ne,
     -- awful.layout.suit.corner.sw,
     -- awful.layout.suit.corner.se,
-    bling.layout.equalarea,
-    bling.layout.deck
 }
 -- }}}
 
