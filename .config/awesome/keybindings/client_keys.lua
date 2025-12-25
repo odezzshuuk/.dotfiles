@@ -1,28 +1,40 @@
-
 local awful = require("awful")
 local gears = require("gears")
+local naughty = require("naughty")
 local hotkeys_popup = awful.hotkeys_popup
 
 return gears.table.join(
-  awful.key({ modkey, }, "f",
+  awful.key({ modkey, "Shift" }, "f",
     function(c)
       c.fullscreen = not c.fullscreen
       c:raise()
     end,
     { description = "toggle fullscreen", group = "client" }),
 
-  awful.key({ modkey, "Control" }, "c", function(c) c:kill() end,
-    { description = "close", group = "client" }),
+  awful.key({ modkey, "Shift" }, "q", function(c) c:kill() end,
+    { description = "close window", group = "client" }),
 
-  awful.key({ modkey, "Control" }, "space", awful.client.floating.toggle,
-    { description = "toggle floating", group = "client" }),
+  -- awful.key({ modkey, "Shift" }, "space",
+  --   function(c)
+  --     awful.client.floating.toggle()
+  --     if (c.floating) then
+  --       naughty.notify({ text = "Floating: True" })
+  --     else
+  --       naughty.notify({ text = "Floating: Flase" })
+  --     end
+  --   end,
+  --   { description = "toggle floating", group = "client" }),
 
   awful.key({ modkey, "Control" }, "Return", function(c) c:swap(awful.client.getmaster()) end, { description = "move to master", group = "client" }),
 
-  awful.key({ modkey, }, "o", function(c) c:move_to_screen() end,
+  awful.key({ modkey, "Shift" }, "o",
+    function(c)
+      naughty.notify({ text = "Moving to screen" })
+      c:move_to_screen()
+    end,
     { description = "move to screen", group = "client" }),
 
-  awful.key({ modkey, }, "t", function(c) c.ontop = not c.ontop end,
+  awful.key({ modkey, "Shift" }, "t", function(c) c.ontop = not c.ontop end,
     { description = "toggle keep on top", group = "client" }),
   awful.key({ modkey, }, "n",
     function(c)
@@ -32,23 +44,30 @@ return gears.table.join(
     end,
     { description = "minimize", group = "client" }),
 
-  awful.key({ modkey, "Control" }, "m",
+  awful.key({ modkey, "Shift" }, "m",
     function(c)
       c.maximized = not c.maximized
       c:raise()
+      if c.maximized then
+        naughty.notify({ text = "Maximized: True" })
+      else
+        naughty.notify({ text = "Maximized: False" })
+      end
     end,
-    { description = "(un)maximize", group = "client" }),
+    { description = "Toggle client maximize", group = "client" }),
 
-  awful.key({ modkey, "Control" }, "m",
+  awful.key({ modkey, "Shift" }, "v",
     function(c)
       c.maximized_vertical = not c.maximized_vertical
       c:raise()
     end,
     { description = "(un)maximize vertically", group = "client" }),
-  awful.key({ modkey, "Control" }, "v",
+
+  awful.key({ modkey, "Shift" }, "h",
     function(c)
       c.maximized_horizontal = not c.maximized_horizontal
       c:raise()
     end,
     { description = "(un)maximize horizontally", group = "client" })
+
 )

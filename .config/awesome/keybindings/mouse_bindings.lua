@@ -29,20 +29,24 @@ return gears.table.join(
       awful.mouse.client.move(c)
     end
   ),
-  awful.button(
-    {},
-    2,
-    function(c)
-      c:emit_signal(
-        "request::activate",
-        "mouse_click",
-        {
-          raise = true
-        }
-      )
-      c:kill()
-    end
-  ),
+
+  -- Middle click key
+  -- awful.button(
+  --   { modkey },
+  --   2,
+  --   function(c)
+  --     c:emit_signal(
+  --       "request::activate",
+  --       "mouse_click",
+  --       {
+  --         raise = true
+  --       }
+  --     )
+  --     awful.mouse.client.resize(c)
+  --   end
+  -- ),
+
+  -- right click key
   awful.button(
     { modkey },
     3,
@@ -57,4 +61,9 @@ return gears.table.join(
       awful.mouse.client.resize(c)
     end
   )
+
+  -- scroll up
+  -- awful.button({}, 4, awful.tag.viewnext),
+  -- scroll down
+  -- awful.button({}, 5, awful.tag.viewprev)
 )

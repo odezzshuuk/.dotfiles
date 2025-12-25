@@ -9,6 +9,7 @@ set laststatus=2
 set statusline+=%f
 set tabstop=2
 set shiftwidth=2
+set mouse=
 
 " hi Normal guibg=NONE ctermbg=NONE
 

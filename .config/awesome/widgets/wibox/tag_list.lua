@@ -1,0 +1,177 @@
+local awful = require("awful")
+local gears = require("gears")
+local wibox = require("wibox")
+local beautiful = require("beautiful")
+local icons = require("utils").icons
+
+local M = {}
+
+local tag_list_buttons = gears.table.join(
+
+  awful.button({}, 1, function(t)
+    t:view_only()
+  end),
+  awful.button({ modkey }, 1, function(t)
+    if client.focus then
+      client.focus:move_to_tag(t)
+    end
+  end),
+  awful.button({}, 3, awful.tag.viewtoggle),
+  awful.button({ modkey }, 3, function(t)
+    if client.focus then
+      client.focus:toggle_tag(t)
+    end
+  end),
+  awful.button({}, 4, function(t)
+    awful.tag.viewnext(t.screen)
+  end),
+  awful.button({}, 5, function(t)
+    awful.tag.viewprev(t.screen)
+  end)
+)
+
+local generate_filter = function(t)
+	return function(c, _)
+		local ctags = c:tags()
+		for _, v in ipairs(ctags) do
+			if v == t then
+				return true
+			end
+		end
+		return false
+	end
+end
+
+local fancy_task_list = function(cfg, t)
+	return awful.widget.tasklist(
+		{
+			screen = cfg.screen or awful.screen.focused(),
+			filter = generate_filter(t),
+		-- Don't want client to minimize / hide when mistakenly click on tag again
+		--	buttons = cfg.tasklist_buttons,
+			widget_template = {
+				{
+					id = "clienttext",
+					widget = wibox.widget.textbox,
+					markup = ""
+				},
+				create_callback = function(self, c, _, _)
+					local icon
+					if icons[c.class] then
+						icon = icons[c.class]
+					else
+						icon = icons.default
+					end
+					self:get_children_by_id("clienttext")[1].markup = " " .. icon .. " "
+				end,
+
+				layout = wibox.container.background
+			}
+		}
+	)
+end
+
+function create_fancy_tag_list(config)
+  local cfg = config or {}
+  local spr = wibox.widget({
+    markup = " ",
+    align = "left",
+    valign = "center",
+    widget = wibox.widget.textbox,
+  })
+
+  local update_tag_border_selected = function(self, tag)
+    if not tag.selected then
+      self:get_children_by_id("top_border")[1].color = beautiful.darker
+    elseif tag.selected then
+      self:get_children_by_id("top_border")[1].color = beautiful.taglist_border_color
+    end
+  end
+
+  local handle_name = function(tag)
+    if not string.find(tag.name, ":") and #tag:clients() > 0 then
+      tag.name = tag.name .. ":"
+    elseif string.find(tag.name, ":") and #tag:clients() == 0 then
+      tag.name = tag.name:sub(1, -2)
+    end
+  end
+
+  local s = cfg.screen or awful.screen.focused()
+  local taglist_buttons = cfg.taglist_buttons
+
+  return awful.widget.taglist({
+    screen = s,
+    filter = awful.widget.taglist.filter.noempty,
+    layout = {
+      layout = wibox.layout.fixed.horizontal,
+      spacing_widget = {
+        color = "#000000",
+        thickness = 2,
+        orientation = "vertical",
+        widget = wibox.widget.separator,
+      },
+    },
+    widget_template = {
+      {
+        {
+          id = "top_border",
+          widget = wibox.widget.separator,
+          forced_height = 2,
+          thickness = 2,
+          forced_width = 80,
+          orientation = "horizontal",
+          color = beautiful.taglist_border_color,
+        },
+        {
+          {
+            -- tag
+            {
+              id = "text_role",
+              widget = wibox.widget.textbox,
+              align = "center",
+            },
+            -- tasklist
+            {
+              id = "tasklist_placeholder",
+              layout = wibox.layout.fixed.horizontal,
+            },
+            spr,
+            --border,
+            layout = wibox.layout.fixed.horizontal,
+          },
+          id = "background_role",
+          widget = wibox.container.background,
+        },
+        layout = wibox.layout.fixed.vertical,
+      },
+      layout = wibox.layout.fixed.horizontal,
+      create_callback = function(self, tag, _, _)
+        self:get_children_by_id("tasklist_placeholder")[1]:add(fancy_task_list(cfg, tag))
+        update_tag_border_selected(self, tag)
+        handle_name(tag)
+        -- self.bg = '#000000'
+      end,
+      update_callback = function(self, tag, _, _)
+        update_tag_border_selected(self, tag)
+        handle_name(tag)
+        -- self.bg = '#000000'
+      end,
+    },
+    buttons = taglist_buttons,
+  })
+end
+
+function M.get(s)
+  local fancy_taglist = require("widgets.fancy_taglist")
+  fancy_taglist = create_fancy_tag_list({
+    screen = s,
+    filter = function(t)
+      return t.selected or #t:clients() > 0
+    end,
+    taglist_buttons = tag_list_buttons,
+    tasklist_buttons = require("widgets.tasklist").tasklist_buttons,
+  })
+  return fancy_taglist
+end
+
+return M

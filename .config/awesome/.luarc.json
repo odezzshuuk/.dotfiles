@@ -23,8 +23,7 @@
       "drawin"
     ],
     "disable": [
-      "lowercase-global",
-      "undefined-global"
+      "lowercase-global"
     ]
   },
 

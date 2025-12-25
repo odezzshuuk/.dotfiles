@@ -169,7 +169,7 @@ set drawbox true
 map d
 map <space>
 map v toggle
-map V invert-below
+map V invert
 map f :fzf_jump
 map dd cut
 map e $$EDITOR $(dirname $f)
