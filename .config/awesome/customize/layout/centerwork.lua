@@ -15,8 +15,8 @@ local max = math.max
 local mouse = mouse
 local mousegrabber = mousegrabber
 local screen = screen
-local madhur = require("madhur")
-local helpers = require("madhur.helpers")
+local customize = require("customize")
+local helpers = require("customize.helpers")
 
 local centerwork = {
     name       = "centerwork",
@@ -32,7 +32,7 @@ local function arrange(p, layout)
 
     -- behave as tall layout if number of clients are less then 3
     if #cls < 3 then
-        return madhur.layout.tallmagnified.arrange(p)
+        return customize.layout.tallmagnified.arrange(p)
     end
 
     local g = {}

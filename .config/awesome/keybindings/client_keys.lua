@@ -14,22 +14,21 @@ return gears.table.join(
   awful.key({ modkey, "Shift" }, "q", function(c) c:kill() end,
     { description = "close window", group = "client" }),
 
-  -- awful.key({ modkey, "Shift" }, "space",
-  --   function(c)
-  --     awful.client.floating.toggle()
-  --     if (c.floating) then
-  --       naughty.notify({ text = "Floating: True" })
-  --     else
-  --       naughty.notify({ text = "Floating: Flase" })
-  --     end
-  --   end,
-  --   { description = "toggle floating", group = "client" }),
+  awful.key({ modkey, "Shift" }, "space",
+    function(c)
+      awful.client.floating.toggle()
+      if (c.floating) then
+        naughty.notify({ text = "Floating: True" })
+      else
+        naughty.notify({ text = "Floating: Flase" })
+      end
+    end,
+    { description = "toggle floating", group = "client" }),
 
-  awful.key({ modkey, "Control" }, "Return", function(c) c:swap(awful.client.getmaster()) end, { description = "move to master", group = "client" }),
+  awful.key({ modkey, "Shift" }, "m", function(c) c:swap(awful.client.getmaster()) end, { description = "move to master", group = "client" }),
 
   awful.key({ modkey, "Shift" }, "o",
     function(c)
-      naughty.notify({ text = "Moving to screen" })
       c:move_to_screen()
     end,
     { description = "move to screen", group = "client" }),
@@ -44,7 +43,7 @@ return gears.table.join(
     end,
     { description = "minimize", group = "client" }),
 
-  awful.key({ modkey, "Shift" }, "m",
+  awful.key({ modkey, "Shift" }, "Return",
     function(c)
       c.maximized = not c.maximized
       c:raise()

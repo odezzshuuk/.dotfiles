@@ -1,8 +1,5 @@
 ---------------------------------------------------------------------------
 --- Text only Layoutbox widget.
---
--- @author Madhur Ahuja &lt;ahuja.madhur@gmail.com&gt;
--- @classmod madhur.widget
 ---------------------------------------------------------------------------
 
 local setmetatable = setmetatable

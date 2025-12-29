@@ -1,16 +1,19 @@
 local M = {}
 
 M.icons = {
-  alacritty = "",
+
+  Alacritty = "",
   kitty = "",
   kitty_quick_access = "",
+
   google_chrome = "",
   firefox = "",
-  brave_browser = "",
+  ["Brave-browser"] = "",
   slack = "",
-  code = "",
+  Code = "",
+
   jetbrains_idea_ce = "",
-  default = "类",
+  default = "",
   simplenote = "",
   dbeaver = "",
   trello_desktop = "",
@@ -21,5 +24,9 @@ M.icons = {
   gpclient = "󰖂",
   thunar = "",
 }
+
+M.color_text = function(text, foreground_color)
+  return '<span foreground="' .. foreground_color .. '">' .. text .. "</span>"
+end
 
 return M

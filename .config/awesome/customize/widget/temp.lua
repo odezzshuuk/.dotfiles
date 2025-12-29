@@ -1,6 +1,5 @@
 
 -- Temperature info
--- madhur.widget.temp
 local timer  = require("gears.timer")
 local spawn  = require("awful.spawn")
 local wibox    = require("wibox")

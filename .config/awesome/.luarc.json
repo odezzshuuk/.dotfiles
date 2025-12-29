@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
 
   "runtime": {
-    "version": "LuaJIT",
+    "version": "Lua 5.3",
     "path": [
       "?.lua",
       "?/init.lua",
@@ -19,6 +19,7 @@
       "tag",
       "root",
       "mouse",
+      "mousegrabber",
       "keygrabber",
       "drawin"
     ],

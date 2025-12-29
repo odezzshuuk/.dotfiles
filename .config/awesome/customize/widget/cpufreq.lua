@@ -2,7 +2,7 @@
 local timer = require("gears.timer")
 local spawn = require("awful.spawn")
 local wibox = require("wibox")
-local helpers = require("madhur.helpers")
+local helpers = require("customize.helpers")
 local tonumber = tonumber
 
 local GOVERNOR_STATE = {

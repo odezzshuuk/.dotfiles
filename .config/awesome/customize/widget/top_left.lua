@@ -3,7 +3,6 @@ local awful = require("awful")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local wibox = require("wibox")
-local color = require("madhur.widget.colors")
 local dpi = beautiful.xresources.apply_dpi
 
 local separator = wibox.widget.textbox("  ")

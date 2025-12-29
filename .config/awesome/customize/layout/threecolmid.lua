@@ -1,5 +1,5 @@
 local awful = require("awful")
-local helpers = require("madhur.helpers")
+local helpers = require("customize.helpers")
 local math = math
 
 local mylayout = {}

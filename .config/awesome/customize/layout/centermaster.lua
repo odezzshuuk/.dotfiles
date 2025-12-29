@@ -1,9 +1,9 @@
 ---------------------------------------------------------------------------
 --- Magnifier layout
 --
--- @author Madhur Ahuja &lt;ahuja.madhur@gmail.com&gt;
--- @copyright 2023 Madhur Ahuja
--- @module madhur.layout
+-- @author customize Ahuja &lt;ahuja.customize@gmail.com&gt;
+-- @copyright 2023 customize Ahuja
+-- @module customize.layout
 ---------------------------------------------------------------------------
 
 -- Grab environment we need

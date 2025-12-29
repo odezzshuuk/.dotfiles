@@ -1,5 +1,5 @@
 return {
-    widget = require("madhur.widget"),
-    layout = require("madhur.layout"),
-    helpers = require("madhur.helpers")
+    widget = require("customize.widget"),
+    layout = require("customize.layout"),
+    helpers = require("customize.helpers")
 }

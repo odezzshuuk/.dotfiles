@@ -1,7 +1,7 @@
 
 -- Grab environment we need
 local awful = require("awful")
-local helpers = require("madhur.helpers")
+local helpers = require("customize.helpers")
 
 local capi =
 {

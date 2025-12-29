@@ -1,5 +1,4 @@
 local gears = require("gears")
-local client = client
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -8,8 +7,6 @@ local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
 local naughty = require("naughty")
 local lain = require("lain")
-
-local theme_dir = gears.filesystem.get_configuration_dir() .. "theme/"
 
 --------------------------
 -- NAUGHTY CONFIGURATION
@@ -60,13 +57,13 @@ theme.taglist_font = "DejaVu Sans Mono 11"
 --theme.taglist_font = "JetBrains Mono Nerd Font 11"
 
 theme.tasklist_font = "UbuntuMono Nerd Font 11"
-theme.fg_normal = "#81a1c1"
-theme.fg_focus = "#1a1b26"
-theme.fg_urgent = "#b74822"
+theme.fg_normal = "#f1f3fc"
+theme.fg_focus = "#4c4c4c"
+theme.fg_urgent = "#fa3b36"
 theme.bg_normal = "#1a1b26"
 theme.bg_focus = "#81a1c1"
-theme.bg_urgent = "#3F3F3F"
-theme.taglist_bg_focus = "#c7c7c7"
+theme.bg_urgent = "#000000"
+theme.taglist_bg_focus = "#ffb932"
 theme.taglist_fg_focus = "#000000"
 --theme.taglist_shape_border_width_focus = 2
 theme.taglist_shape_border_color_focus = "#81a1c1"
@@ -77,16 +74,16 @@ theme.taglist_shape_border_color_focus = "#81a1c1"
 --theme.taglist_bg_occupied = "#1a1b26"
 --theme.taglist_bg_occupied = "00"
 theme.taglist_fg_occupied = "#81a1c1"
-theme.taglist_spacing = 3
+-- theme.taglist_spacing = 3
 
 --theme.tasklist_bg_focus = "#2b2f40"
 theme.tasklist_bg_normal = "#2b2f40"
-theme.tasklist_bg_focus = "#fbcf39"
+theme.tasklist_bg_focus = "#abff39"
 theme.tasklist_fg_focus = "#000000"
 theme.border_width = 1
 theme.border_normal = "#333333"
 -- theme.border_normal = "#00ff00"
-theme.border_focus = "#00ff00"
+theme.border_focus = "#008800"
 theme.border_marked = "#CC9393"
 theme.titlebar_bg_focus = "#3F3F3F"
 theme.titlebar_bg_normal = "#3F3F3F"
