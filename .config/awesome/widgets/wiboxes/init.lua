@@ -231,7 +231,8 @@ function M.setup(screen)
     tag_list,
     hr_spr,
     spr,
-    wibox.container.margin(layout_box, 5, 10, 5, 5),
+    -- wibox.container.margin(layout_box, 5, 10, 5, 5),
+    layout_box,
     spr,
     task_list,
     -- jgmenu

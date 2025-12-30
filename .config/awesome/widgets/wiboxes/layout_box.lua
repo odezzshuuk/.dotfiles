@@ -4,7 +4,8 @@ local awful = require("awful")
 local M = {}
 
 function M.setup(s)
-  local widget = customize.widget.layoutbox(s)
+  -- local widget = customize.widget.layoutbox(s)
+  local widget = awful.widget.layoutbox(s)
   widget:buttons(gears.table.join(
     awful.button({}, 1, function()
       awful.layout.inc(1)

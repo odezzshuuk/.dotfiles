@@ -44,7 +44,6 @@ function M.setup(screen)
       {
         {
           {
-
             {
               id = index_role_id,
               widget = wibox.widget.textbox,
@@ -74,9 +73,6 @@ function M.setup(screen)
         local master_task_icon = utils.icons.default
 
         local update_tag_info_and_style = function(task_icon, tag_color, inner_bg)
-          if #tag:clients() == 0 then
-            return
-          end
 
           local tag_text = "<b>" .. tostring(tag.index) .. "</b> ".. task_icon .. " "
           index_role_textbox.markup = utils.color_text(tag_text, tag_color)
@@ -84,12 +80,13 @@ function M.setup(screen)
         end
 
         local refresh_tag = function()
+
           if not tag.selected then
             update_tag_info_and_style(master_task_icon, beautiful.fg_normal, "#3c3c3c")
           else
             local master_client = awful.client.getmaster()
 
-            if utils.icons[master_client.class] then
+            if master_client and utils.icons[master_client.class] then
               master_task_icon = utils.icons[master_client.class]
             end
             update_tag_info_and_style(master_task_icon, beautiful.taglist_fg_focus , beautiful.taglist_bg_focus)
@@ -107,6 +104,16 @@ function M.setup(screen)
         tag:connect_signal("property::selected", signal_handler )
         tag:connect_signal("tagged", signal_handler )
         tag:connect_signal("untagged", signal_handler )
+
+        tag:connect_signal("property::layout", function()
+          for _, c in pairs(tag:clients()) do
+            c.maximized = false
+            c.maximized_vertical = false
+            c.maximized_horizontal = false
+            c.floating = false
+          end
+        end)
+
       end,
       update_callback = function(self, tag, _, _)
 

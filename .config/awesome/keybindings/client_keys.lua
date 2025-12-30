@@ -25,13 +25,13 @@ return gears.table.join(
     end,
     { description = "toggle floating", group = "client" }),
 
-  awful.key({ modkey, "Shift" }, "m", function(c) c:swap(awful.client.getmaster()) end, { description = "move to master", group = "client" }),
+  awful.key({ modkey, "Shift" }, "Return", function(c) c:swap(awful.client.getmaster()) end, { description = "move to master", group = "client" }),
 
   awful.key({ modkey, "Shift" }, "o",
     function(c)
       c:move_to_screen()
     end,
-    { description = "move to screen", group = "client" }),
+    { description = "move client to screen", group = "client" }),
 
   awful.key({ modkey, "Shift" }, "t", function(c) c.ontop = not c.ontop end,
     { description = "toggle keep on top", group = "client" }),
@@ -43,7 +43,7 @@ return gears.table.join(
     end,
     { description = "minimize", group = "client" }),
 
-  awful.key({ modkey, "Shift" }, "Return",
+  awful.key({ modkey, "Shift" }, "m",
     function(c)
       c.maximized = not c.maximized
       c:raise()

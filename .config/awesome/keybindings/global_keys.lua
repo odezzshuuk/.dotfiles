@@ -5,8 +5,8 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 
 local focus_screen_relative = function(direction)
-  if #screen > 1 then
-    awful.screen.focus_relative(direction)
+  if screen.count() > 1 then
+    awful.screen.focus_bydirection(direction)
   else
     naughty.notify({ text = "Only one screen detected" })
   end
@@ -33,19 +33,18 @@ local globalkeys = gears.table.join(
 
   awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
 
-  awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
-  awful.key({ modkey }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
-
   awful.key({ modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
 
   awful.key({ modkey }, "space", function()
-    awful.layout.inc(1)
-  end, { description = "select next", group = "layout" }),
+    local t = awful.screen.focused().selected_tag
+    if t then
+      t:emit_signal("property::layout")
+    end
+  end, { description = "rearrange clients", group = "layout" }),
 
-  awful.key({ modkey, "Control" }, "space", function()
+  awful.key({ modkey, "Control" }, "Space", function()
     awful.layout.inc(-1)
   end, { description = "select previous", group = "layout" }),
-
 
   awful.key({ modkey }, "w", function()
     mymainmenu:show()
@@ -59,8 +58,10 @@ local globalkeys = gears.table.join(
     awful.client.swap.byidx(-1)
   end, { description = "swap with previous client by index", group = "client" }),
 
-  awful.key({ modkey, "Control" }, "j", function() focus_screen_relative(1) end, { description = "focus the next screen", group = "screen" }),
-  awful.key({ modkey, "Control" }, "k", function() focus_screen_relative(-1) end, { description = "focus the previous screen", group = "screen" }),
+  awful.key({ modkey }, "Down", function() focus_screen_relative("down") end, { description = "focus down screen", group = "screen" }),
+  awful.key({ modkey }, "Up", function() focus_screen_relative("up") end, { description = "focus up screen", group = "screen" }),
+  awful.key({ modkey }, "Left", function() focus_screen_relative("left") end, { description = "focus left screen", group = "screen" }),
+  awful.key({ modkey }, "Right", function() focus_screen_relative("right") end, { description = "focus right screen", group = "screen" }),
 
   awful.key({ modkey }, "u", awful.client.urgent.jumpto, { description = "jump to urgent client", group = "client" }),
 
@@ -81,14 +82,6 @@ local globalkeys = gears.table.join(
 
   -- awful.key({ modkey, "Control" }, "h", function() awful.tag.incnmaster(1, nil, true) end,
   --   { description = "increase the number of master clients", group = "layout" }),
-
-  awful.key({ modkey, "Control" }, "l", function()
-    awful.tag.incnmaster(-1, nil, true)
-  end, { description = "decrease the number of master clients", group = "layout" }),
-
-  awful.key({ modkey, "Control" }, "h", function()
-    awful.tag.incncol(1, nil, true)
-  end, { description = "increase the number of columns", group = "layout" }),
 
   awful.key({ modkey, "Control" }, "l", function()
     awful.tag.incncol(-1, nil, true)
