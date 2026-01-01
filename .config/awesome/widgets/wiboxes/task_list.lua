@@ -1,13 +1,11 @@
 local awful = require("awful")
-local customize = require("customize")
 local wibox = require("wibox")
 local gears = require("gears")
-local beautiful = require("beautiful")
 local client = client
 
-local tasklist = {}
+local M = {}
 
-tasklist.tasklist_buttons = gears.table.join(
+local tasklist_buttons = gears.table.join(
   awful.button({}, 1, function(c)
     if c == client.focus then
       c.minimized = true
@@ -41,33 +39,43 @@ tasklist.tasklist_buttons = gears.table.join(
   end)
 )
 
-function tasklist.setup(s)
-  return customize.widget.tasklist({
+function M.setup(s)
+  return awful.widget.tasklist({
     screen = s,
     filter = awful.widget.tasklist.filter.currenttags,
-    buttons = tasklist.tasklist_buttons,
+    buttons = tasklist_buttons,
     style = {
-      shape_border_width = 0,
-      shape = gears.shape.rectangle,
+      border_width = 1,
+      border_color = "#777777",
+      shape = gears.shape.rounded_bar,
     },
     layout = {
-      spacing = 20,
-      layout = wibox.layout.fixed.horizontal,
+      spacing = 10,
       spacing_widget = {
         {
-          markup = "|",
-          widget = wibox.widget.textbox,
+          forced_width = 5,
+          shape = gears.shape.circle,
+          widget = wibox.widget.separator,
         },
         valign = "center",
         halign = "center",
         widget = wibox.container.place,
       },
+      layout = wibox.layout.flex.horizontal,
     },
     -- Notice that there is *NO* wibox.wibox prefix, it is a template,
     -- not a widget instance.
     widget_template = {
       {
         {
+          {
+            {
+              id = "icon_role",
+              widget = wibox.widget.imagebox,
+            },
+            margins = 2,
+            widget = wibox.container.margin,
+          },
           {
             id = "text_role",
             widget = wibox.widget.textbox,
@@ -84,4 +92,4 @@ function tasklist.setup(s)
   })
 end
 
-return tasklist
+return M

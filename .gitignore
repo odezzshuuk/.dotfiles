@@ -16,6 +16,7 @@
 !.xsession
 !README.md
 !.fdignore
+!.gitattributes
 
 # .config/
 !.config/
@@ -28,9 +29,13 @@
 # .tmux directory
 !.tmux/
 
+!Resources/
+!Resources/Photos/
+!Resources/Photos/Wallpapers/
+!Resources/Photos/Wallpapers/**
+
 # Keep these specific ignore patterns
 *.img
-*.png
 **/.DS_Store
 .vscode
 *test*

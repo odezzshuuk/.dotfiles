@@ -215,12 +215,15 @@ function M.setup(screen)
     ontop = false,
   })
 
-  if customize.helpers.is_portrait(screen) then
-    right_widgets = right_widgets_vertical
-  end
+   -- Get screen geometry
+   local geometry = screen.geometry
+   -- Return true if height > width (portrait), false otherwise (landscape)
+   if geometry.height > geometry.width then
+      right_widgets = right_widgets_vertical
+   end
 
-  local layout_box = require("widgets.wiboxes.layout_box").setup(screen)
   local tag_list = require("widgets.wiboxes.tag_list").setup(screen)
+  local layout_box = require("widgets.wiboxes.layout_box").setup(screen)
   local task_list = require("widgets.wiboxes.task_list").setup(screen)
   local jgmenu = require("widgets.wiboxes.topbar.jgmenu")
 
@@ -234,6 +237,7 @@ function M.setup(screen)
     -- wibox.container.margin(layout_box, 5, 10, 5, 5),
     layout_box,
     spr,
+    -- s.mypromptbox = awful.widget.prompt()
     task_list,
     -- jgmenu
   }

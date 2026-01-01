@@ -14,6 +14,7 @@ export EDITOR='nvim'
 LFCD="~/.config/lf/lfcd.sh"
 if [ -f "$LFCD" ]; then
     source "$LFCD"
+    alias lf='lfcd'
 fi
 
 dotfiles() {

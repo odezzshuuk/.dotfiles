@@ -35,12 +35,16 @@ local globalkeys = gears.table.join(
 
   awful.key({ modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
 
-  awful.key({ modkey }, "space", function()
+  awful.key({ modkey }, "=", function()
     local t = awful.screen.focused().selected_tag
     if t then
       t:emit_signal("property::layout")
     end
   end, { description = "rearrange clients", group = "layout" }),
+
+  awful.key({ modkey }, "Space", function()
+    -- app_launcher:toggle()
+  end, { description = "select next", group = "layout" }),
 
   awful.key({ modkey, "Control" }, "Space", function()
     awful.layout.inc(-1)
@@ -58,8 +62,11 @@ local globalkeys = gears.table.join(
     awful.client.swap.byidx(-1)
   end, { description = "swap with previous client by index", group = "client" }),
 
-  awful.key({ modkey }, "Down", function() focus_screen_relative("down") end, { description = "focus down screen", group = "screen" }),
-  awful.key({ modkey }, "Up", function() focus_screen_relative("up") end, { description = "focus up screen", group = "screen" }),
+  awful.key({ modkey, "Control" }, "j", function() focus_screen_relative("down") end, { description = "focus down screen", group = "screen" }),
+  awful.key({ modkey, "Control" }, "k", function() focus_screen_relative("up") end, { description = "focus up screen", group = "screen" }),
+  awful.key({ modkey, "Control" }, "h", function() focus_screen_relative("left") end, { description = "focus left screen", group = "screen" }),
+  awful.key({ modkey, "Control" }, "l", function() focus_screen_relative("right") end, { description = "focus right screen", group = "screen" }),
+
   awful.key({ modkey }, "Left", function() focus_screen_relative("left") end, { description = "focus left screen", group = "screen" }),
   awful.key({ modkey }, "Right", function() focus_screen_relative("right") end, { description = "focus right screen", group = "screen" }),
 
@@ -96,7 +103,7 @@ local globalkeys = gears.table.join(
   end, { description = "restore minimized", group = "client" }),
 
   -- Prompt
-  awful.key({ modkey }, ":", function()
+  awful.key({ modkey }, "r", function()
     awful.screen.focused().mypromptbox:run()
   end, { description = "run prompt", group = "launcher" }),
 
