@@ -26,13 +26,13 @@
 !.ssh/
 !.ssh/config
 
+!.local/
+!.local/share/
+!.local/share/wallpapers/
+!.local/share/wallpapers/**
+
 # .tmux directory
 !.tmux/
-
-!Resources/
-!Resources/Photos/
-!Resources/Photos/Wallpapers/
-!Resources/Photos/Wallpapers/**
 
 # Keep these specific ignore patterns
 *.img

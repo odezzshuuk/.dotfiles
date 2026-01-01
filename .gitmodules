@@ -1,0 +1,9 @@
+[submodule ".config/awesome/bling"]
+	path = .config/awesome/bling
+	url = https://github.com/BlingCorp/bling.git
+[submodule ".config/awesome/lain"]
+	path = .config/awesome/lain
+	url = https://github.com/lcpz/lain.git
+[submodule ".config/awesome/awesome-wm-widgets"]
+	path = .config/awesome/awesome-wm-widgets
+	url = https://github.com/streetturtle/awesome-wm-widgets.git

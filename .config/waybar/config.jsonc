@@ -1,1 +1,1 @@
-{ "include": [ "~/.config/waybar/layouts/with_music.jsonc" ] }
+{ "include": [ "~/.config/waybar/layouts/with_window.jsonc" ] }

@@ -26,4 +26,10 @@
 !hypr/
 !hypr/**
 
+!waybar/
+!waybar/**
+
+!rofi/
+!rofi/**
+
 !.fdignore

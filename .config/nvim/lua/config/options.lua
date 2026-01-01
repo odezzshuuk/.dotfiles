@@ -43,12 +43,6 @@ vim.opt.clipboard       = "unnamedplus"
 -- vim.opt.spell           = true
 -- vim.opt.spellfile       = vim.fn.getcwd() .. '/en.utf-8.add'
 
--- vim.cmd('hi Normal guibg=NONE ctermbg=NONE') -- for transparent background
--- vim.cmd('hi WinSeparator guifg=#85877C guibg=#85877C')
-
--- floating window color scheme
--- vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#85877C', bg = '#85877C' })
-
 -- Undercurl(not work on alacritty)
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])

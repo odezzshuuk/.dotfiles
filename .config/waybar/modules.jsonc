@@ -160,13 +160,13 @@
 
     "custom/start": {
         "format": "",
-        "on-click": "~/.config/rofi/bin/drun &"
+        "on-click": "rofi -show drun &"
     },
 
     "custom/ctlcenter" : {
         "tooltip" : false,
-        "format" : "",
-        "on-click" : "swaync-client -t",
+        "format" : "⏻",
+        "on-click" : "notify-send 'Control Center' 'Open Control Center Menu'",
         "menu": "on-click-right",
         "menu-file": "~/.config/waybar/context/ctlcenter.xml",
         "menu-actions": {

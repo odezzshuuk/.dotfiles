@@ -58,6 +58,7 @@ local ayu_palette = require('ayu.colors').generate()
 local colors_overwrite = {
   Visual          = { bg = mini_palette.green, fg = mini_palette.bg_edge2 },
   LineNr          = { fg = "#626975" },
+  WinSeparator    = { fg = "#73f8b1" },
 
   FloatBorder     = { fg = "#fda339", bg = mini_palette.bg_edge },
   NormalFloat     = { bg = mini_palette.bg_edge },
