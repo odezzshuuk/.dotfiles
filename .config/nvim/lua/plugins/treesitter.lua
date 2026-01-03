@@ -1,28 +1,24 @@
--- local treesitter_config = require("nvim-treesitter.configs")
-
-
 --- @diagnostic disable: missing-fields
-require("nvim-treesitter").setup({
-  ensure_installed = "all",
-  sync_install = false,
-  ignore_install = { "" }, -- List of parsers to ignore installing
-  highlight = {
-    enable = true,         -- false will disable the whole extension
-    disable = { "" },      -- list of language that will be disabled
-    additional_vim_regex_highlighting = true,
-  },
-  indent = { enable = true, disable = { "yaml" } },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "<CR>",
-      node_incremental = "<CR>",
-      -- scope_incremental = "<TAB>",
-      node_decremental = "<BS>",
-    },
-  },
+require("nvim-treesitter").setup()
+require("nvim-treesitter").install({
+  "bash",
+  "c",
+  "cpp",
+  "css",
+  "c_sharp",
+  "html",
+  "javascript",
+  "json",
+  "lua",
+  "markdown",
+  "markdown_inline",
+  "python",
+  "rust",
+  "typescript",
+  "vim",
+  "yaml",
+  "go",
 })
-
 -- context fold
 require("treesitter-context").setup({
   enable = true,            -- Enable this plugin (Can be enabled/disabled later via commands)

@@ -8,6 +8,12 @@
 -- })
 -- require('onedark').load()
 
+require('ayu').setup({
+  overrides = {
+    Normal = { bg = "None" }
+  }
+})
+
 
 vim.cmd('colorscheme ayu-dark')
 local mini_palette = require('plugins.mini').palette

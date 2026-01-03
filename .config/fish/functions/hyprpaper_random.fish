@@ -1,0 +1,10 @@
+function hyprpaper_random
+    set WALLPAPER_DIR "$HOME/.local/share/wallpapers/"
+    set CURRENT_WALL (hyprctl hyprpaper listloaded)
+
+    # Get a random wallpaper that is not the current one
+    set WALLPAPER (find "$WALLPAPER_DIR" -type f ! -name (basename "$CURRENT_WALL") | shuf -n 1)
+
+    # Apply the selected wallpaper
+    hyprctl hyprpaper reload , "$WALLPAPER" > /dev/null
+end

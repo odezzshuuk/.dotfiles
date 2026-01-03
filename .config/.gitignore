@@ -32,4 +32,7 @@
 !rofi/
 !rofi/**
 
+!foot/
+!foot/**
+
 !.fdignore

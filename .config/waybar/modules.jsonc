@@ -18,7 +18,7 @@
 
     "cpu": {
         "interval": 10,
-        "format":" {usage}%",
+        "format":"CPU: {usage}%",
         "states": {
             "warning": 80,
             "critical": 90
@@ -39,7 +39,7 @@
 
     "memory": {
         "interval": 10,
-        "format": "  {used:0.1f}G/{total:0.1f}G",
+        "format": "MEM: {used:0.1f}G/{total:0.1f}G",
         "states": {
             "warning": 80,
             "critical": 90
@@ -80,7 +80,7 @@
 
     "network": {
         "interval": 10,
-        "format-wifi": "  {essid} ({signalStrength} )",
+        "format-wifi": " {signalStrength}",
         "format-ethernet": "󱓞 Wired connection",
         "format-disconnected": "",
         "menu": "on-click-right",

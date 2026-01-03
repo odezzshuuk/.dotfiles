@@ -5,7 +5,7 @@ function dotfiles
   switch $argv[1]
     case git
       command git --git-dir=$git_dir --work-tree=$work_tree $argv[2..-1]
-    case lzgit
+    case lazygit
       command lazygit --git-dir=$git_dir --work-tree=$work_tree $argv[2..-1]
     case edit
       set -l target_path $work_tree

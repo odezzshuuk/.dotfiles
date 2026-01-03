@@ -11,7 +11,7 @@ PS1='[\u@\h \W]\$ '
 
 export EDITOR='nvim'
 
-LFCD="~/.config/lf/lfcd.sh"
+LFCD="$HOME/.config/lf/lfcd.sh"
 if [ -f "$LFCD" ]; then
     source "$LFCD"
     alias lf='lfcd'
@@ -26,7 +26,7 @@ dotfiles() {
       shift
       command git --git-dir="$git_dir" --work-tree="$work_tree" "$@"
       ;;
-    lzgit)
+    lazygit)
       shift
       command lazygit --git-dir="$git_dir" --work-tree="$work_tree" "$@"
       ;;

@@ -7,7 +7,7 @@
     "group/gleft1" : {
         "orientation": "horizontal",
         "modules" : [
-            "battery", "cpu", "backlight" 
+            "cpu", "memory"
         ]
     },
 
@@ -22,20 +22,20 @@
     "group/gright1" : {
         "orientation": "horizontal",
         "modules" : [
-            "memory", "temperature", "tray"
+            "pulseaudio", "backlight", "bluetooth", "network"
         ]
     },
 
     "group/gright2" : {
         "orientation": "horizontal",
         "modules" : [
-            "pulseaudio", "bluetooth", "network"
+            "temperature","battery", "tray"
         ]
     },
 
     "modules-left"   : ["custom/start", "group/gleft1", "group/gleft2"],
     "modules-center" : ["clock"],
-    "modules-right"  : [ "group/gright2", "group/gright1", "custom/ctlcenter"],
+    "modules-right"  : [ "group/gright1", "group/gright2", "custom/ctlcenter"],
 
     "include": [ "~/.config/waybar/modules.jsonc" ]
 }
