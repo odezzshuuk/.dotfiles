@@ -70,14 +70,14 @@ tooltip label {
 }
 
 #clock {
-    padding: 2px 18px;
     border-radius: 15px;
     background: @module-bg;
 }
 
 /* single icons cool size  */
 
-#gright2, #gleft2  {
+#gright2, 
+#gleft2  {
     margin: 0 8px;
 }
 

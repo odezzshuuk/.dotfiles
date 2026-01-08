@@ -26,7 +26,8 @@ configuration {
     cycle: true;
 
     /* Vim keybindings */
-    kb-row-up: "Up";
+    kb-row-up: "Control+k";
+    kb-row-down: "Control+j";
     kb-row-tab: "";
     kb-mode-previous: "Shift+Right";
     kb-mode-next    : "Shift+Left";

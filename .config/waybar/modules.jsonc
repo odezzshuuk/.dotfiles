@@ -39,7 +39,8 @@
 
     "memory": {
         "interval": 10,
-        "format": "MEM: {used:0.1f}G/{total:0.1f}G",
+        "format": "MEM: {used:0.1f}G/{total:0.1f}G Swap: {swapUsed: .1f}G/{swapTotal: .1f}G",
+        "tooltip-format": "RAM Used: {used:.1f}GiB\nRAM Total: {total:.1f}GiB\nSwap Used: {swapUsed:.1f}GiB\nSwap Total: {swapTotal:.1f}GiB",
         "states": {
             "warning": 80,
             "critical": 90
@@ -80,7 +81,7 @@
 
     "network": {
         "interval": 10,
-        "format-wifi": " {signalStrength}",
+        "format-wifi": "  {signalStrength}%",
         "format-ethernet": "󱓞 Wired connection",
         "format-disconnected": "",
         "menu": "on-click-right",
