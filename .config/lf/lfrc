@@ -165,6 +165,9 @@ set hidden true
 set ignorecase true
 set icons true
 set drawbox true
+# set relativenumber
+set previewer ~/.config/lf/preview.sh
+# set cleaner ~/.config/lf/cleaner.sh
 
 map d
 map <space>
