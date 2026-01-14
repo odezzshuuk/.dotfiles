@@ -118,8 +118,8 @@ vim.keymap.set('n', '<leader>lD', toggle_diagnostic_virtual_text,
 vim.keymap.set('n', '<leader>lw', function() require('fzf-lua').diagnostics_workspace() end,
   opts_desc("Workspace Diagnostics"))
 vim.keymap.set('n', "<leader>lr", vim.lsp.buf.rename, opts_desc("Rename"))
-vim.keymap.set('n', "<leader>lq", "<cmd>FzfLua lsp_document_symbols<cr>", opts_desc("Document Symbols"))
-vim.keymap.set('n', "<leader>ls", "<cmd>FzfLua lsp_live_workspace_symbols<cr>", opts_desc("Workspace Symbols"))
+vim.keymap.set('n', "<leader>ls", "<cmd>FzfLua lsp_document_symbols<cr>", opts_desc("Document Symbols"))
+vim.keymap.set('n', "<leader>lq", "<cmd>FzfLua lsp_live_workspace_symbols<cr>", opts_desc("Workspace Symbols"))
 vim.keymap.set('n', "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", opts_desc("CodeLens Action"))
 vim.keymap.set('n', '<leader>lh', toggle_inlay_hints, opts_desc("Toggle Inlay Hints"))
 

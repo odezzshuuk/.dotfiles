@@ -47,7 +47,12 @@ case "$MIME_TYPE" in
     image/*)
         # Use chafa to display the image in the terminal.
         # The size is adjusted to fit the preview pane's width.
-        chafa --size "${PREVIEW_WIDTH}x" --animate off --polite on -- "$FILE_PATH"
+        # if [ -n "$TMUX" ]; then
+        #     chafa -f sixel --size "${PREVIEW_WIDTH}x" --animate off --polite on -- "$FILE_PATH"
+        # else
+        #     chafa --size "${PREVIEW_WIDTH}x" --animate off --polite on -- "$FILE_PATH"
+        # fi
+        chafa -f sixel --passthrough tmux --size "${PREVIEW_WIDTH}x" --animate off --polite on -- "$FILE_PATH"
         ;;
 
     # --- PDF documents ---
