@@ -34,6 +34,9 @@
 # .tmux directory
 !.tmux/
 
+!.copilot/
+!.copilot/**
+
 # Keep these specific ignore patterns
 *.img
 **/.DS_Store

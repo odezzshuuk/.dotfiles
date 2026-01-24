@@ -10,8 +10,6 @@
 
 local general_on_attach = require('config.lsp.general-opts').general_client_opts.on_attach
 
-local bin_name = 'marksman'
-local cmd = { bin_name, 'server' }
 
 -- Autocommand to restart Marksman on detach
 local function restart_marksman_on_detach()
@@ -35,7 +33,7 @@ local function restart_marksman_on_detach()
 end
 
 return {
-  cmd = cmd,
+  cmd = { 'marksman', 'server' },
   filetypes = { 'markdown', 'markdown.mdx' },
   root_markers = { '.marksman.toml', '.git' },
   on_attach = function(client, bufnr)
