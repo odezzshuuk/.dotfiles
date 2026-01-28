@@ -14,7 +14,7 @@
     "group/gleft2" : {
         "orientation": "horizontal",
         "modules" : [
-            "hyprland/window"
+            "network#bandwidth", "hyprland/window"
         ]
     },
 
@@ -22,7 +22,7 @@
     "group/gright1" : {
         "orientation": "horizontal",
         "modules" : [
-            "tray", "cpu","memory"
+          "tray", "memory", "cpu"
         ]
     },
 
@@ -30,7 +30,7 @@
         "orientation": "horizontal",
         "modules" : [
             // "bluetooth", 
-            "network", 
+            "network#wifi", 
             "clock"
         ]
     },

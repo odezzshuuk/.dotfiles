@@ -52,14 +52,14 @@ tooltip label {
 /* global paddings */
 #backlight, #pulseaudio, #network, #temperature,
 #bluetooth, #battery, #memory, #cpu, #load{
-    padding: 2px 7px;
+    padding: 0px 4px;
 }
 
 #workspaces, #bluetooth, #battery, #memory, #temperature,
 #network, #pulseaudio, #backlight, #cpu, #load {
     background: transparent;
     border-radius: 15px;
-    margin: 0 3px;
+    margin: 0 1px;
 } 
 
 #custom-start, #custom-logout, #gright1, #gleft1,
