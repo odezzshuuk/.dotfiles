@@ -9,7 +9,15 @@
             "active": "󰮯",
             "persistent": "",
             "empty": ""
-         }
+        },
+        "window-rewrite": {
+            "class<code>": "󰨞",
+            "class<foot>": "",
+            "class<Alacritty>": "",
+            "class<brave-browser>": "",
+            "class<blender>": "",
+            "class<Unity>": ""
+        }
     },
 
     "hyprland/window" : {

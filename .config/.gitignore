@@ -38,4 +38,12 @@
 !gtk-3.0/
 !gtk-3.0/**
 
+!blender/
+!blender/**
+blender/*/scripts/
+blender/*/config/*
+!blender/*/config/startup.blend
+!blender/*/config/userpref.blend
+
+
 !.fdignore
