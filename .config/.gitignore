@@ -40,7 +40,18 @@
 
 !blender/
 !blender/**
-blender/*/scripts/
+
+# ignore all files in directory
+blender/*/scripts/*
+# unignore directory
+!blender/*/scripts/presets/
+# ignore all files in directory
+blender/*/scripts/presets/*
+# unignore interface_theme directory
+!blender/*/scripts/presets/interface_theme/
+
+blender/*/extensions/
+
 blender/*/config/*
 !blender/*/config/startup.blend
 !blender/*/config/userpref.blend
