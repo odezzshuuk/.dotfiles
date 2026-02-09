@@ -1,6 +1,7 @@
 #
 # ~/.bashrc
 #
+export PATH="$PATH:$HOME/.local/bin"
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -44,3 +45,7 @@ dotfiles() {
       ;;
   esac
 }
+
+bind -x '"\C-f": fzf_change_directory'
+
+

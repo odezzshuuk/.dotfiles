@@ -18,6 +18,13 @@
         ]
     },
 
+    "group/gcenter" : {
+        "orientation": "horizontal",
+        "modules" : [
+            "hyprland/workspaces"
+        ]
+    },
+
 
     "group/gright1" : {
         "orientation": "horizontal",
@@ -36,7 +43,7 @@
     },
 
     "modules-left"   : ["custom/start", "group/gleft1", "group/gleft2"],
-    "modules-center" : ["hyprland/workspaces"],
+    "modules-center" : ["group/gcenter"],
     "modules-right"  : [ "group/gright1", "group/gright2", "custom/ctlcenter"],
 
     "include": [ "~/.config/waybar/modules.jsonc" ]

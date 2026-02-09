@@ -38,6 +38,11 @@
 !gtk-3.0/
 !gtk-3.0/**
 
+!systemd/
+!systemd/user/
+!systemd/user/*.service
+!systemd/user/*.timer
+
 !blender/
 !blender/**
 

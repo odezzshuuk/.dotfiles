@@ -1,0 +1,7 @@
+[Unit]
+Description=Change wallpaper
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/hyprpaper_random

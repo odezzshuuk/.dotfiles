@@ -1,4 +1,4 @@
-@import "colors.css";
+@import url("colors.css");
 
 * {
     font-family: 'CaskaydiaCove Nerd Font Propo';
@@ -62,7 +62,12 @@ tooltip label {
     margin: 0 1px;
 } 
 
-#custom-start, #custom-logout, #gright1, #gleft1,
+#workspaces button.active {
+    color: #000000;
+    background: @red;
+}
+
+#custom-start, #custom-logout, #gright1, #gleft1, #gcenter,
 #gright2, #gleft2, #custom-ctlcenter, #power-profiles-daemon {
     padding: 2px 9px;
     border-radius: 15px;
@@ -104,11 +109,7 @@ tooltip label {
     color: @workspace-fg;
     font-size: 14px;
     border-radius: 15px;
-    margin: 0 7px;
-}
-
-#workspaces button:hover {
-    background: transparent;
+    padding: 0px 10px 0px 4px;
 }
 
 #mpris, #window {

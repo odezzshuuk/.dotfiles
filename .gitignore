@@ -30,6 +30,8 @@
 !.local/share/
 !.local/share/wallpapers/
 !.local/share/wallpapers/**
+!.local/bin/
+!.local/bin/**
 
 # .tmux directory
 !.tmux/
