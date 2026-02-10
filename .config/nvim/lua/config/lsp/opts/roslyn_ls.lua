@@ -103,7 +103,7 @@ return {
   name = 'roslyn_ls',
   offset_encoding = 'utf-8',
   cmd = {
-    vim.env.HOME .. '/.vscode/extensions/ms-dotnettools.csharp-2.110.4-linux-x64/.roslyn/Microsoft.CodeAnalysis.LanguageServer',
+    vim.env.HOME .. '/.vscode/extensions/ms-dotnettools.csharp-2.120.3-linux-x64/.roslyn/Microsoft.CodeAnalysis.LanguageServer',
     '--logLevel',
     'Information',
     '--extensionLogDirectory',
