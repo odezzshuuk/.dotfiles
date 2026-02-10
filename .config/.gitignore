@@ -61,5 +61,7 @@ blender/*/config/*
 !blender/*/config/startup.blend
 !blender/*/config/userpref.blend
 
+!matugen/
+!matugen/**
 
 !.fdignore

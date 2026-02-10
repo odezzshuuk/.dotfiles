@@ -9,6 +9,7 @@ hyprpaper_random() {
 
     # Apply the selected wallpaper
     hyprctl hyprpaper wallpaper ",$WALLPAPER" > /dev/null
+    matugen image "$WALLPAPER" > /dev/null
 }
 
 hyprpaper_random

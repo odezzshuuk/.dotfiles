@@ -1,1 +1,4 @@
-{ "include": [ "~/.config/waybar/layouts/with_window.jsonc" ] }
+{ 
+    "include": [ "~/.config/waybar/layouts/with_window.jsonc" ],
+    "reload_style_on_change": true
+}
