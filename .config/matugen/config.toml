@@ -39,6 +39,12 @@ output_path = "~/.config/waybar/colors.css"
 input_path = "./templates/rofi-colors.rasi"
 output_path = "~/.config/rofi/matugen-colors.rasi"
 
+# [tempates.gtk3]
+# input_path = "./templates/gtk.css"
+# output_path = '~/.config/gtk-3.0/gtk.css'
+
+# [templates.gtk4]
+
 [config.custom_colors]
 red = "#ff0000"
 blue = "#0000ff"

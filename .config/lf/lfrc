@@ -22,6 +22,8 @@ set scrolloff 10
 # Use the `dim` attribute instead of underline for the cursor in the preview pane
 set cursorpreviewfmt "\033[7;2m"
 set info size
+set number true
+set relativenumber true
 
 # use enter for shell commands
 map <enter> shell

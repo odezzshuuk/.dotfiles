@@ -15,7 +15,7 @@
     background: transparent;
     font-size: 14px;
     border-radius: 15px;
-    color:@primary;
+    color:@tertiary;
 }
 
 tooltip {
@@ -63,15 +63,15 @@ tooltip label {
 } 
 
 #workspaces button.active {
-    color: @on_secondary;
-    background: @secondary;
+    color: @on_primary;
+    background: @primary;
 }
 
 #custom-start, #custom-logout, #gright1, #gleft1, #gcenter,
 #gright2, #gleft2, #custom-ctlcenter, #power-profiles-daemon {
     padding: 2px 9px;
     border-radius: 15px;
-    background: @on_primary;
+    background: @on_tertiary;
 }
 
 #clock {

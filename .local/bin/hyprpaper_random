@@ -1,15 +1,17 @@
-#!/bin/sh
+#!/bin/bash
 
 hyprpaper_random() {
-    WALLPAPER_DIR="$HOME/.local/share/wallpapers/"
-    CURRENT_WALL=$(hyprctl hyprpaper listloaded)
+    local WALLPAPER_DIR="$HOME/.local/share/wallpapers/"
+    local CURRENT_WALL=$(hyprctl hyprpaper listloaded)
 
     # Get a random wallpaper that is not the current one
-    WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -name "$(basename "$CURRENT_WALL")" | shuf -n 1)
+    local WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -name "$(basename "$CURRENT_WALL")" | shuf -n 1)
 
     # Apply the selected wallpaper
     hyprctl hyprpaper wallpaper ",$WALLPAPER" > /dev/null
-    matugen image "$WALLPAPER" > /dev/null
+    if type matugen >/dev/null 2>&1; then
+      matugen image "$WALLPAPER" > /dev/null
+    fi
 }
 
 hyprpaper_random

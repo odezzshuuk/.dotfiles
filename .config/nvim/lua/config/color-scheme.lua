@@ -10,7 +10,7 @@
 
 require('ayu').setup({
   overrides = {
-    Normal = { bg = "None" }
+    -- Normal = { bg = "None" }
   }
 })
 

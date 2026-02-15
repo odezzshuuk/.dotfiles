@@ -11,9 +11,7 @@
 --- If you primarily use `lua-language-server` for Neovim, and want to provide completions,
 --- analysis, and location handling for plugins on runtime path, you can use the following
 --- settings.
----
---- ```lua
---- vim.lsp.config('lua_ls', {
+--- ```lua vim.lsp.config('lua_ls', {
 ---   on_init = function(client)
 ---     if client.workspace_folders then
 ---       local path = client.workspace_folders[1].name
@@ -41,25 +39,23 @@
 ---       workspace = {
 ---         checkThirdParty = false,
 ---         library = {
----           vim.env.VIMRUNTIME
+---           vim.env.VIMRUNTIME,
 ---           -- Depending on the usage, you might want to add additional paths
 ---           -- here.
----           -- '${3rd}/luv/library'
----           -- '${3rd}/busted/library'
----         }
+---           -- '${3rd}/luv/library',
+---           -- '${3rd}/busted/library',
+---         },
 ---         -- Or pull in all of 'runtimepath'.
 ---         -- NOTE: this is a lot slower and will cause issues when working on
 ---         -- your own configuration.
 ---         -- See https://github.com/neovim/nvim-lspconfig/issues/3189
----         -- library = {
----         --   vim.api.nvim_get_runtime_file('', true),
----         -- }
----       }
+---         -- library = vim.api.nvim_get_runtime_file('', true),
+---       },
 ---     })
 ---   end,
 ---   settings = {
----     Lua = {}
----   }
+---     Lua = {},
+---   },
 --- })
 --- ```
 ---
@@ -67,31 +63,49 @@
 --- * [Lua.runtime.path](https://luals.github.io/wiki/settings/#runtimepath)
 --- * [Lua.workspace.library](https://luals.github.io/wiki/settings/#workspacelibrary)
 ---
+
+local root_markers1 = {
+  '.emmyrc.json',
+  '.luarc.json',
+  '.luarc.jsonc',
+}
+local root_markers2 = {
+  '.luacheckrc',
+  '.stylua.toml',
+  'stylua.toml',
+  'selene.toml',
+  'selene.yml',
+}
+
+---@type vim.lsp.Config
 return {
   cmd = { 'lua-language-server' },
   filetypes = { 'lua' },
-  root_markers = {
-    '.luarc.json',
-    '.luarc.jsonc',
-    '.luacheckrc',
-    '.stylua.toml',
-    'stylua.toml',
-    'selene.toml',
-    'selene.yml',
-    '.git',
-  },
+  root_markers = vim.fn.has('nvim-0.11.3') == 1 and { root_markers1, root_markers2, { '.git' } }
+    or vim.list_extend(vim.list_extend(root_markers1, root_markers2), { '.git' }),
+
+   workspace = {
+     checkThirdParty = false,
+     library = {
+       vim.env.VIMRUNTIME,
+       -- Depending on the usage, you might want to add additional paths
+       -- here.
+       -- '${3rd}/luv/library',
+       -- '${3rd}/busted/library',
+     },
+     -- Or pull in all of 'runtimepath'.
+     -- NOTE: this is a lot slower and will cause issues when working on
+     -- your own configuration.
+     -- See https://github.com/neovim/nvim-lspconfig/issues/3189
+     -- library = vim.api.nvim_get_runtime_file('', true),
+   },
   settings = {
     Lua = {
       diagnostics = {
-        globals = { "vim" },
+        globals = { 'vim' },
       },
-      workspace = {
-        library = {
-          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-          [vim.fn.stdpath("config") .. "/lua"] = true,
-        },
-        checkThirdParty = false,
-      },
+      codeLens = { enable = true },
+      hint = { enable = true, semicolon = 'Disable' },
     },
   },
 }
