@@ -65,7 +65,6 @@ return {
     ["textDocument/implementation"] = require('omnisharp_extended').implementation_handler,
   },
   on_attach = function(client, bufnr)
-    require('config.lsp.general-opts').general_client_opts.on_attach(client)
     override_keymap()
   end,
   settings = {

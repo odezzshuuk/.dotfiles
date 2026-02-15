@@ -89,7 +89,6 @@ return {
     end
   end,
   on_attach = function(client, bufnr)
-    require('config.lsp.general-opts').general_client_opts.on_attach(client)
     vim.api.nvim_buf_create_user_command(bufnr, 'LspClangdSwitchSourceHeader', function()
       switch_source_header(bufnr, client)
     end, { desc = 'Switch between source/header' })

@@ -193,7 +193,6 @@ return {
   },
 
   on_attach = function(client, bufnr)
-    require('config.lsp.general-opts').general_client_opts.on_attach(client)
     -- avoid duplicate autocmds for same buffer
     if vim.api.nvim_get_autocmds({ buffer = bufnr, group = group })[1] then
       return

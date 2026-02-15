@@ -13,7 +13,6 @@
 --- the root of your project.
 ---
 --- ### Vue support
----
 --- Since v3.0.0, the Vue language server requires `vtsls` to support TypeScript.
 ---
 --- ```

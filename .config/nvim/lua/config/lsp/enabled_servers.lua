@@ -1,0 +1,20 @@
+return {
+  "lua_ls",
+  "pyright",
+  "jsonls",
+  "ts_ls",
+  "marksman",
+  "bashls",
+  "tailwindcss",
+  "clangd",
+  -- "omnisharp",
+  "roslyn_ls",
+  -- "roslyn",
+  "html",
+  "cssls",
+  "vue_ls",
+  "vtsls",
+  "rust_analyzer",
+  "eslint",
+}
+

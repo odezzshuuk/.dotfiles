@@ -84,26 +84,8 @@ return {
   root_markers = vim.fn.has('nvim-0.11.3') == 1 and { root_markers1, root_markers2, { '.git' } }
     or vim.list_extend(vim.list_extend(root_markers1, root_markers2), { '.git' }),
 
-   workspace = {
-     checkThirdParty = false,
-     library = {
-       vim.env.VIMRUNTIME,
-       -- Depending on the usage, you might want to add additional paths
-       -- here.
-       -- '${3rd}/luv/library',
-       -- '${3rd}/busted/library',
-     },
-     -- Or pull in all of 'runtimepath'.
-     -- NOTE: this is a lot slower and will cause issues when working on
-     -- your own configuration.
-     -- See https://github.com/neovim/nvim-lspconfig/issues/3189
-     -- library = vim.api.nvim_get_runtime_file('', true),
-   },
   settings = {
     Lua = {
-      diagnostics = {
-        globals = { 'vim' },
-      },
       codeLens = { enable = true },
       hint = { enable = true, semicolon = 'Disable' },
     },

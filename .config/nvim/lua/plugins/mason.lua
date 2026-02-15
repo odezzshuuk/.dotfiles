@@ -1,4 +1,4 @@
-local servers = require("config.lsp.general-opts").enabled_servers
+local servers = require("config.lsp.enabled_servers")
 
 local mason_opts = {
   ui = {

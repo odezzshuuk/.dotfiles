@@ -1,23 +1,3 @@
-local enabled_servers = {
-  "lua_ls",
-  "pyright",
-  "jsonls",
-  "ts_ls",
-  "marksman",
-  "bashls",
-  "tailwindcss",
-  "clangd",
-  -- "omnisharp",
-  "roslyn_ls",
-  -- "roslyn",
-  "html",
-  "cssls",
-  "vue_ls",
-  "vtsls",
-  "rust_analyzer",
-  "eslint",
-}
-
 local lsp_overloads_opts = {
   ui = {
     border = "single", -- The border to use for the signature popup window. Accepts same border values as |nvim_open_win()|.
@@ -83,9 +63,6 @@ capabilities.workspace = {
 }
 
 return {
-  general_client_opts = {
-    on_attach = general_on_attach,
-    capabilities = capabilities,
-  },
-  enabled_servers = enabled_servers,
+  on_attach = general_on_attach,
+  capabilities = capabilities,
 }
