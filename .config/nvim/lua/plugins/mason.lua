@@ -17,7 +17,7 @@ local mason_opts = {
   }
 }
 
-local manually_installed_servers = { "clangd", "roslyn_ls", "roslyn" }
+local manually_installed_servers = { "clangd", "roslyn_ls", "roslyn", "cmake", "rust_analyzer" }
 local mason_managed_servers = vim.tbl_filter(function(server)
   return not vim.tbl_contains(manually_installed_servers, server)
 end, servers)

@@ -66,6 +66,14 @@
 ---
 --- This includes the same Deno-excluding logic from `ts_ls`. It is not recommended to enable both `vtsls` and `ts_ls` at the same time!
 
+local vue_language_server_path = vim.fn.stdpath('data') .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+local vue_plugin = {
+  name = '@vue/typescript-plugin',
+  location = vue_language_server_path,
+  languages = { 'vue' },
+  configNamespace = 'typescript',
+}
+
 ---@type vim.lsp.Config
 return {
   cmd = { 'vtsls', '--stdio' },
@@ -73,6 +81,7 @@ return {
     hostInfo = 'neovim',
   },
   filetypes = {
+    'vue',
     'javascript',
     'javascriptreact',
     'javascript.jsx',
@@ -105,4 +114,13 @@ return {
     -- We fallback to the current working directory if no project root is found
     on_dir(project_root or vim.fn.getcwd())
   end,
+  settings = {
+    vtsls = {
+      tsserver = {
+        globalPlugins = {
+          vue_plugin
+        }
+      }
+    }
+  }
 }

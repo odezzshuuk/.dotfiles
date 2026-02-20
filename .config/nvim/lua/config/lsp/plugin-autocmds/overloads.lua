@@ -36,33 +36,18 @@ local lsp_overloads_opts = {
 
 }
 
-local function general_on_attach(client, bufnr)
-  if client.server_capabilities.documentHighlightProvider then
-    local group = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = true })
-    vim.api.nvim_create_autocmd("CursorMoved", {
-      group = group,
-      buffer = 0,
-      callback = function()
-        vim.lsp.buf.clear_references()
-        vim.lsp.buf.document_highlight()
-      end
-    })
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = "LspOnAttach",
+  pattern = "*",
+  callback = function(e)
+  local client = vim.lsp.get_client_by_id(e.data.client_id)
+
+  if not client then
+    return
   end
 
-  if (client.server_capabilities.signatureHelpProvider) then
+  if client.server_capabilities.signatureHelpProvider then
     require("lsp-overloads").setup(client, lsp_overloads_opts)
   end
-end
-
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.workspace = {
-  didChangeWatchedFiles = {
-    dynamicRegistration = true,
-  }
-}
-
-return {
-  on_attach = general_on_attach,
-  capabilities = capabilities,
-}
+  end,
+})

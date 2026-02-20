@@ -1,11 +1,25 @@
---- @diagnostic disable: missing-fields
-require("nvim-treesitter").setup()
-require("nvim-treesitter").install({
+local nvim_treesitter = require("nvim-treesitter")
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = nvim_treesitter.get_available(),
+  callback = function()
+    if not vim.tbl_contains(nvim_treesitter.get_installed(), vim.bo.filetype) then
+      nvim_treesitter.install({ vim.bo.filetype })
+    else
+      vim.treesitter.start()
+      vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+      vim.wo.foldmethod = 'expr'
+      -- indentation, provided by nvim-treesitter
+      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end
+  end
+})
+
+nvim_treesitter.setup()
+nvim_treesitter.install({
   "bash",
-  "c",
-  "cpp",
-  "css",
   "c_sharp",
+  "css",
   "html",
   "javascript",
   "json",
@@ -15,10 +29,9 @@ require("nvim-treesitter").install({
   "python",
   "rust",
   "typescript",
-  "vim",
   "yaml",
-  "go",
 })
+
 -- context fold
 require("treesitter-context").setup({
   enable = true,            -- Enable this plugin (Can be enabled/disabled later via commands)
@@ -34,7 +47,6 @@ require("treesitter-context").setup({
   zindex = 20,     -- The Z-index of the context window
   on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 })
-
 require("ts_context_commentstring").setup({})
 
 vim.g.skip_ts_context_commentstring_module = true

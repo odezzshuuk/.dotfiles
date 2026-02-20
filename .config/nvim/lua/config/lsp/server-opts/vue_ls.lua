@@ -36,8 +36,11 @@ return {
 
       if not ts_client then
         -- there can sometimes be a short delay until `ts_ls`/`vtsls` are attached so we retry for a few times until it is ready
-        if retries <= 10 then retries = retries + 1
-          vim.defer_fn(function() typescriptHandler(_, result, context) end, 100)
+        if retries <= 10 then
+          retries = retries + 1
+          vim.defer_fn(function()
+            typescriptHandler(_, result, context)
+          end, 100)
         else
           vim.notify(
             'Could not find `ts_ls`, `vtsls`, or `typescript-tools` lsp client required by `vue_ls`.',

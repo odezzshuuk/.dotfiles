@@ -11,6 +11,8 @@ else
   require "config.color-scheme"
   require "config.options"
   require "config.private"
+  require "config.commands"
+  require "config.auto-commands"
   require "config.lsp" -- neovim native lsp config 
 
   require "plugins.treesitter"

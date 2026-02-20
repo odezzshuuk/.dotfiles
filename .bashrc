@@ -49,3 +49,4 @@ dotfiles() {
 bind -x '"\C-f": fzf_change_directory'
 
 
+. "$HOME/.cargo/env"
