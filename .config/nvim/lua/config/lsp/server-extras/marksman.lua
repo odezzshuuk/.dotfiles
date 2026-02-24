@@ -2,7 +2,7 @@
 local marksman_on_attach_group_id = vim.api.nvim_create_augroup("MarksmanOnAttach", { clear = true })
 vim.api.nvim_create_autocmd("LspAttach", {
   group = marksman_on_attach_group_id,
-  pattern = { ".md", ".markdown", ".mdx" },
+  pattern = { "*.md", "*.markdown", "*.mdx" },
   callback = function(e0)
 
     local client_name = vim.lsp.get_client_by_id(e0.data.client_id).name
