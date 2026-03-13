@@ -23,6 +23,7 @@ function _fzf_change_directory
     fd '^\.git$' "$HOME/Code/" -d 3 -H -I --prune --exec echo {//}
     echo "$HOME/.local/share/wallpapers"
     echo "$HOME/.local/bin"
+    echo "$HOME/Downloads"
     ls -ad $HOME/Resources/*/ | sed 's|/*$||'
 
     # current directory 

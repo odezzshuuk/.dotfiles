@@ -6,6 +6,7 @@ local mini_comment = require("mini.comment")
 local diagnostic_goto_opts = require('utils').diagnostic_goto_opts
 local toggle_inlay_hints = require('utils').toggle_inlay_hints
 local operation_in_split = require('utils').operation_in_split
+local toggle_window_maximize_equalize = require('utils').toggle_window_maximize_equalize
 local toggle_diagnostic_virtual_text = require("utils").toggle_diagnostic_virtual_text
 local fzf_lua_opts = require('plugins.fzf-lua').opts
 
@@ -50,7 +51,7 @@ vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", opts_desc())
 vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", opts_desc())
 vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", opts_desc())
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", opts_desc())
-vim.keymap.set("n", "<c-w>z", ":vertical resize | windcmd =<CR>", opts_desc("Maximize window width"))
+vim.keymap.set("n", "<c-w>z", toggle_window_maximize_equalize, opts_desc("Toggle maximize/equalize window layout"))
 
 vim.keymap.set("n", "^", 'v%<C-v>', opts_desc()) -- vertical select by match bracket/parentheses/braces
 vim.keymap.set("n", "ge", "gi", opts_desc())
@@ -167,3 +168,5 @@ vim.keymap.del('n', 'grr')
 vim.keymap.del('n', 'gri')
 vim.keymap.del('n', 'gO')
 vim.keymap.del('n', 'grt')
+
+-- vim.keymap.del("n", "<c-w>-")  -- disable window height decrease

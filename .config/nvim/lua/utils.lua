@@ -1,4 +1,10 @@
 local M = { }
+local win_layout_state = {}
+
+local function is_normal_window(win_id)
+  local config = vim.api.nvim_win_get_config(win_id)
+  return not config.relative or config.relative == ""
+end
 
 ---@type fun(function):nil
 function M.operation_in_split(operation)
@@ -69,6 +75,43 @@ function M.toggle_inlay_hints()
     vim.lsp.inlay_hint.enable(false)
   else
     vim.lsp.inlay_hint.enable(true)
+  end
+end
+
+function M.toggle_window_maximize_equalize()
+  local current_tab = vim.api.nvim_get_current_tabpage()
+  local current_win = vim.api.nvim_get_current_win()
+  local wins = vim.api.nvim_tabpage_list_wins(current_tab)
+  local normal_wins = {}
+
+  for _, win_id in ipairs(wins) do
+    if vim.api.nvim_win_is_valid(win_id) and is_normal_window(win_id) then
+      table.insert(normal_wins, win_id)
+    end
+  end
+
+  if #normal_wins <= 1 then
+    return
+  end
+
+  local state = win_layout_state[current_tab]
+  if state and state.maximized_win == current_win then
+    vim.cmd('wincmd =')
+    win_layout_state[current_tab] = nil
+    return
+  end
+
+  local ok_height = pcall(function()
+    vim.cmd('wincmd _')
+  end)
+  local ok_width = pcall(function()
+    vim.cmd('wincmd |')
+  end)
+
+  if ok_height and ok_width then
+    win_layout_state[current_tab] = {
+      maximized_win = current_win,
+    }
   end
 end
 

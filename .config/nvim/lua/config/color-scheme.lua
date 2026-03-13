@@ -69,7 +69,8 @@ local colors_overwrite = {
   FloatBorder     = { fg = "#fda339", bg = mini_palette.bg_edge },
   NormalFloat     = { bg = mini_palette.bg_edge },
 
-  DiagnosticError = { fg = "#eb403a" },
+  DiagnosticError = { fg = "#eb302a" },
+  DiagnosticWarn = { fg = "#eafc00" },
   DiffAdd    = { fg = nil, bg = mini_palette.green_bg },
   DiffChange = { fg = nil, bg = mini_palette.cyan_bg },
   DiffDelete = { fg = nil, bg = mini_palette.red_bg },
