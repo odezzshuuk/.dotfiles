@@ -95,14 +95,30 @@ vim.keymap.set('n', 'gh', function() vim.lsp.buf.hover({ border = borders[1] }) 
 vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts_desc("Declaration"))
 vim.keymap.set('n', 'gi', function() fzf_lua.lsp_implementations(fzf_lua_opts.lsp.reference) end, opts_desc("Go To Implementation"))
 
-vim.keymap.set('n', 'gvd',
+vim.keymap.set(
+  'n',
+  'gvd',
   function() operation_in_split(fzf_lua.lsp_definitions) end,
   opts_desc("Goto definition in split")
 )
-vim.keymap.set('n', 'gvr',
-  function() operation_in_split(require('plugins.fzf-lua').fzf_lua_references_with_opts) end,
+vim.keymap.set(
+  'n',
+  'gvr',
+  function()
+    -- operation_in_split(require('plugins.fzf-lua').fzf_lua_references_with_opts) 
+    operation_in_split(function() fzf_lua.lsp_references(fzf_lua_opts.lsp.references) end)
+  end,
   opts_desc("Goto reference in split")
 )
+vim.keymap.set(
+  'n',
+  'gvi',
+  function()
+    operation_in_split(function() fzf_lua.lsp_implementations(fzf_lua_opts.lsp.reference) end)
+  end,
+  opts_desc("Goto implementation in split")
+)
+
 vim.keymap.set('n', 'gl', function() vim.diagnostic.open_float() end, opts_desc())
 vim.keymap.set('n', 'gs', function() require('fzf-lua').lsp_live_workspace_symbols() end,
   opts_desc("Workspace Symbols"))

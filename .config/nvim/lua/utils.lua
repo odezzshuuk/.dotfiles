@@ -8,14 +8,14 @@ end
 
 ---@type fun(function):nil
 function M.operation_in_split(operation)
-  local function is_normal_window(win)
-    local available = false
-    local config = vim.api.nvim_win_get_config(win)
-    if not config.relative or config.relative == "" then
-      available = true
-    end
-    return available
-  end
+  -- local function is_normal_window(win)
+  --   local available = false
+  --   local config = vim.api.nvim_win_get_config(win)
+  --   if not config.relative or config.relative == "" then
+  --     available = true
+  --   end
+  --   return available
+  -- end
 
   local wins = vim.api.nvim_tabpage_list_wins(0)
   local cursor_pos = vim.api.nvim_win_get_cursor(0)
