@@ -54,13 +54,13 @@ cmp.setup({
 		end,
 	},
 	mapping = {
-		["<C-k>"] = cmp.mapping.select_prev_item(),
-		["<C-j>"] = cmp.mapping.select_next_item(),
-		["<C-n>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-		["<C-p>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+		["<C-k>"]     = cmp.mapping.select_prev_item(),
+		["<C-j>"]     = cmp.mapping.select_next_item(),
+		["<C-Down>"]  = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+		["<C-Up>"]    = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-		["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-		["<Esc>"] = cmp.mapping(function(fallback)
+		["<C-y>"]     = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+		["<Esc>"]     = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.close()
 				vim.api.nvim_command("stopinsert")

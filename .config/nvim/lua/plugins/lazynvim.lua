@@ -159,6 +159,19 @@ require("lazy").setup({
     },
   },
 
+  -- tmux seamless
+  {
+    "christoomey/vim-tmux-navigator",
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+      "TmuxNavigatorProcessList",
+    },
+  },
+
   -- my plugin
   {
     "odezzshuuk/mini-functions.nvim",

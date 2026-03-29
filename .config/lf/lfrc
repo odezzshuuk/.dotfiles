@@ -26,7 +26,7 @@ set number true
 set relativenumber true
 
 # use enter for shell commands
-map <enter> shell
+map <enter> open
 
 # show the result of execution of previous commands
 map ` !true
@@ -43,7 +43,7 @@ map X !$f
 # }}
 
 # dedicated keys for file opener actions
-map o &mimeopen $f
+# map o &mimeopen $f
 map O $mimeopen --ask $f
 
 # define a custom 'open' command
@@ -177,6 +177,6 @@ map v toggle
 map V invert
 map f :fzf_jump
 map dd cut
-map e $$EDITOR $(dirname $f)
+map o $$EDITOR $(dirname $f)
 
 

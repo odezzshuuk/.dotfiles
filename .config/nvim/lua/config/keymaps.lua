@@ -38,13 +38,19 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- Normal --
--- Window Navigation
-vim.keymap.set("n", "<C-h>", "<C-w>h", opts_desc())
--- keymap("n", "<C-j>", "<C-w>j", opts_desc())
--- keymap("n", "<C-k>", "<C-w>k", opts_desc())
-vim.keymap.set("n", "<C-l>", "<C-w>l", opts_desc())
-vim.keymap.set('n', '<C-j>', '10j', opts_desc())
-vim.keymap.set('n', '<C-k>', '10k', opts_desc())
+-- Aggregate Navigation
+-- vim.keymap.set("n", "<C-h>", "<C-w>h", opts_desc())
+-- vim.keymap.set("n", "<C-l>", "<C-w>l", opts_desc())
+vim.keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>", opts_desc())
+vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>", opts_desc())
+vim.keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>", opts_desc())
+vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>", opts_desc())
+
+-- quick move
+vim.keymap.set('n', '<C-n>', '10j', opts_desc())
+vim.keymap.set('n', '<C-m>', '10k', opts_desc())
+vim.keymap.set('v', '<C-n>', '10j', opts_desc())
+vim.keymap.set('v', '<C-m>', '10k', opts_desc())
 
 -- Window Resize
 vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", opts_desc())
@@ -54,11 +60,7 @@ vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", opts_desc())
 vim.keymap.set("n", "<c-w>z", toggle_window_maximize_equalize, opts_desc("Toggle maximize/equalize window layout"))
 
 vim.keymap.set("n", "^", 'v%<C-v>', opts_desc()) -- vertical select by match bracket/parentheses/braces
-vim.keymap.set("n", "ge", "gi", opts_desc())
-
--- Visual --
-vim.keymap.set('v', '<C-j>', '10j', opts_desc())
-vim.keymap.set('v', '<C-k>', '10k', opts_desc())
+vim.keymap.set("n", "ge", "gi", opts_desc())  -- go to end of last inserted text
 
 -- Stay in indent mode
 vim.keymap.set("v", "<", "<gv", opts_desc())
@@ -70,7 +72,7 @@ vim.keymap.set("v", "<D-c>", '"+y', opts_desc())
 vim.keymap.set("x", "J", ":move '>+1<CR>gv-gv", opts_desc())
 vim.keymap.set("x", "K", ":move '<-2<CR>gv-gv", opts_desc())
 vim.keymap.set("x", "<A-j>", ":move '>+1<CR>gv-gv", opts_desc())
-vim.keymap.set("x", "<A-k>", ":move '<-2<CR>gv-gv", opts_desc())
+vim.keymap.set("x", "<a-k>", ":move '<-2<cr>gv-gv", opts_desc())
 
 vim.keymap.set({ "n", "v", "i" }, "<Del>", "<Nop>", opts_desc()) -- disable <Del> key
 -- Terminal --

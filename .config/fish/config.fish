@@ -1,5 +1,6 @@
 set fish_greeting ""
 
+set -g fish_key_bindings fish_vi_key_bindings
 set -gx EDITOR nvim
 set -gx XDG_CONFIG_HOME $HOME/.config
 
@@ -27,15 +28,12 @@ if type -q Unity\ Hub
   alias unity-hub "Unity\ Hub"
 end
 
-bind \cr fzf_select_history # Bind for peco select history to Ctrl+R
-bind \cf fzf_change_directory # Bind for peco change directory to Ctrl+F
-# bind \cs fish_test
+bind ctrl-r fzf_select_history # Bind for peco select history to Ctrl+R
+bind ctrl-f fzf_change_directory # Bind for peco change directory to Ctrl+F
+# bind ctrl-s fish_test
 
-# vim-like
-bind \cl forward-char
-
-# prevent iterm2 from closing when typing Ctrl-D (EOF)
-bind \cd delete-char
+# -M bind to vim insert mode
+bind -M insert ctrl-space 'forward-char'
 
 if status is-interactive
     # Commands to run in interactive sessions can go here

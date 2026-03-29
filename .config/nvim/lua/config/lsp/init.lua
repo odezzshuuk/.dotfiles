@@ -37,10 +37,6 @@ vim.filetype.add({
   },
 })
 
-local signature_help_config = {
-  offset_x = 300
-}
-
 vim.diagnostic.config(diagnostic_config)
 
 local general_lsp_on_attach_group_id = vim.api.nvim_create_augroup("LspOnAttach", { clear = true })

@@ -108,10 +108,13 @@ local colors_overwrite = {
   GitSignsStagedChangeddelete = { fg = "#fdea00" },
   GitSignsStagedTopdelete     = { fg = "#eb403a" },
 
-  --- indent line ---
+  --- indent_line ---
   IblScope                    = { fg = "#f1611c" },
   IblNonIndent                = { fg = mini_palette.bg },
-  IblIndent                   = { fg = "#444c5e" }
+  IblIndent                   = { fg = "#444c5e" },
+
+  --- mini.files ---
+  MiniFilesCursorLine         = { fg = "#0a141c", bg="#ff72aa", bold = true },
 }
 
 -- vim.api.nvim_set_hl(0, "WhichKeyFloat", { bg = palette.bg_mid })
