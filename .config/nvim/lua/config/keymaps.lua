@@ -58,6 +58,8 @@ vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", opts_desc())
 vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", opts_desc())
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", opts_desc())
 vim.keymap.set("n", "<c-w>z", toggle_window_maximize_equalize, opts_desc("Toggle maximize/equalize window layout"))
+vim.keymap.set("n", "<c-w>h", ":split<CR>", opts_desc("Split window horizontally"))
+
 
 vim.keymap.set("n", "^", 'v%<C-v>', opts_desc()) -- vertical select by match bracket/parentheses/braces
 vim.keymap.set("n", "ge", "gi", opts_desc())  -- go to end of last inserted text

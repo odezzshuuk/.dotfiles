@@ -1,4 +1,4 @@
-function fzf_select_history
+function fzf_command_history
   set -l buf (commandline -b)
   if [ $buf ]
     history | fzf --query "$buf" | read selected
