@@ -1,6 +1,9 @@
 local mini_files = require("mini.files")
 local mini_hues = require("mini.hues")
 local hipatterns = require("mini.hipatterns")
+local mini_align = require("mini.align")
+local mini_comment = require("mini.comment")
+local mini_notify = require("mini.notify")
 
 --- mini.nvim config
 --- config information leverage mini.nvim
@@ -130,11 +133,12 @@ local mini_diff_config = {
 }
 
 -- setup
-require("mini.align").setup(mini_align_config)
-require("mini.comment").setup(mini_comment_config)
+mini_align.setup(mini_align_config)
+mini_comment.setup(mini_comment_config)
 -- mini_hues.setup(mini_hues_config)
 mini_files.setup(mini_files_opts)
 hipatterns.setup(hipatterns_config)
+mini_notify.setup({ lsp_progress = { duration_last = 10000 }})
 
 M.toggle_mini_files = function()
   if mini_files.close() then

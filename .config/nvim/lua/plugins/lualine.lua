@@ -216,7 +216,6 @@ local copilot_indicator = {
     -- return spinners[frame + 1]
   end,
 
-  cond = show_in_width,
   color = function()
     local client = vim.lsp.get_clients({ name = "GitHub Copilot" })[1]
     if client == nil then

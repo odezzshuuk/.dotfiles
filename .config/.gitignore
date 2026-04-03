@@ -67,4 +67,6 @@ blender/*/config/*
 !yazi/
 !yazi/**
 
+!starship.toml
+
 !.fdignore

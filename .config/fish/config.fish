@@ -12,8 +12,8 @@ source ~/.config/lf/lfcd.fish
 
 # set lf as lfcd
 if type -q lf; and type -q lfcd
-    # alias lf "lfcd"
-  alias lf "y"
+    alias lf "lfcd"
+    # alias lf "y"
 end
 
 
@@ -56,3 +56,5 @@ if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
+
+starship init fish | source

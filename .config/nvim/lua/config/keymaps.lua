@@ -47,10 +47,10 @@ vim.keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>", opts_desc())
 vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>", opts_desc())
 
 -- quick move
-vim.keymap.set('n', '<C-n>', '10j', opts_desc())
-vim.keymap.set('n', '<C-m>', '10k', opts_desc())
-vim.keymap.set('v', '<C-n>', '10j', opts_desc())
-vim.keymap.set('v', '<C-m>', '10k', opts_desc())
+vim.keymap.set('n', '<A-j>', '10j', opts_desc())
+vim.keymap.set('n', '<A-k>', '10k', opts_desc())
+vim.keymap.set('v', '<A-j>', '10j', opts_desc())
+vim.keymap.set('v', '<A-k>', '10k', opts_desc())
 
 -- Window Resize
 vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", opts_desc())
@@ -73,8 +73,8 @@ vim.keymap.set("v", "<D-c>", '"+y', opts_desc())
 -- Move text up and down
 vim.keymap.set("x", "J", ":move '>+1<CR>gv-gv", opts_desc())
 vim.keymap.set("x", "K", ":move '<-2<CR>gv-gv", opts_desc())
-vim.keymap.set("x", "<A-j>", ":move '>+1<CR>gv-gv", opts_desc())
-vim.keymap.set("x", "<a-k>", ":move '<-2<cr>gv-gv", opts_desc())
+-- vim.keymap.set("x", "<A-j>", ":move '>+1<CR>gv-gv", opts_desc())
+-- vim.keymap.set("x", "<A-k>", ":move '<-2<CR>gv-gv", opts_desc())
 
 vim.keymap.set({ "n", "v", "i" }, "<Del>", "<Nop>", opts_desc()) -- disable <Del> key
 -- Terminal --
