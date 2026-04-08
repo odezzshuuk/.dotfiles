@@ -31,17 +31,6 @@ require("lazy").setup({
   { "rebelot/kanagawa.nvim", lazy = true },
   { "scottmckendry/cyberdream.nvim", lazy = true, },
   { "folke/tokyonight.nvim", lazy = false },
-  {
-    "navarasu/onedark.nvim",
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      require('onedark').setup {
-        style = 'darker'
-      }
-      -- Enable theme
-      require('onedark').load()
-    end
-  },
   { "Shatur/neovim-ayu", lazy = false },
 
 
@@ -83,10 +72,6 @@ require("lazy").setup({
     "ibhagwan/fzf-lua",
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      -- calling `setup` is optional for customization
-      require("fzf-lua").setup({})
-    end
   },
 
   -- lsp
@@ -144,20 +129,7 @@ require("lazy").setup({
   "windwp/nvim-ts-autotag",
 
   -- Debugger
-  {
-    "mfussenegger/nvim-dap",
-    event = "VeryLazy",
-    dependencies = {
-      {
-        "rcarriga/nvim-dap-ui",
-      },
-      { "theHamsta/nvim-dap-virtual-text" },
-      {
-        "nvim-telescope/telescope-dap.nvim",
-      },
-      { "jbyuki/one-small-step-for-vimkind" },
-    },
-  },
+  { "mfussenegger/nvim-dap", },
 
   -- tmux seamless
   {

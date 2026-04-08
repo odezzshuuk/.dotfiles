@@ -3,6 +3,8 @@ if vim.g.vscode then
   require "config.vscode-neovim"
 else
   require "plugins.lazynvim"
+  -- require "config.plugins"
+
   -- Keymap before plugin loaded for basic keymap, which can be override by plugin keymap config
   -- lazy plugin manager
   -- Color

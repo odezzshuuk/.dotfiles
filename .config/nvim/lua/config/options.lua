@@ -26,6 +26,7 @@ vim.opt.mouse           = ""
 vim.opt.splitbelow      = true
 vim.opt.splitright      = true
 vim.opt.showtabline     = 0
+vim.opt.timeout         = true
 vim.opt.timeoutlen      = 500
 vim.opt.list            = false
 vim.opt.listchars       = {

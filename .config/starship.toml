@@ -2,14 +2,142 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 # Inserts a blank line between shell prompts
 add_newline = true
+# Which is equivalent to
+format = """
+$username\
+$hostname\
+$localip\
+$shlvl\
+$singularity\
+$kubernetes\
+$directory\
+$vcsh\
+$fossil_branch\
+$fossil_metrics\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$hg_state\
+$pijul_channel\
+$docker_context\
+
+$fill\
+
+$package\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$fennel\
+$fortran\
+$gleam\
+$golang\
+$guix_shell\
+$haskell\
+$haxe\
+$helm\
+$java\
+$julia\
+$kotlin\
+$gradle\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$opa\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$quarto\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$solidity\
+$swift\
+$terraform\
+$typst\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$conda\
+$meson\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$nats\
+$direnv\
+$env_var\
+$mise\
+$crystal\
+$custom\
+$sudo\
+$cmd_duration\
+$time\
+
+$line_break\
+
+$jobs\
+$battery\
+$status\
+$os\
+$container\
+$netns\
+$shell\
+$character
+"""
+
+
 # Replace the '❯' symbol in the prompt with '➜'
 [character] # The name of the module we are configuring is 'character'
 success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+
 # Disable the package module, hiding it from the prompt completely
 [package]
 disabled = true
 symbol = "󰏗 "
 format = '\[[$symbol$version]($style)\]'
+
+[fill]
+symbol = "─"
+style = "bold white"
+
+[time]
+disabled = false
+format = '\[[$time]($style)\]'
+
+[git_metrics]
+format = '\[[+$added]($added_style)\]\[[-$deleted]($deleted_style)\]'
+[git_state]
+format = '\[[$state ($progress_current/$progress_total)]($style)\]'
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style))'
+modified = "M"
+deleted = "D"
+[git_branch]
+symbol = " "
+format = '\[[$symbol$branch]($style)\]'
+[git_commit]
+tag_symbol = '  '
+format = '\[[\($hash$tag\)]($style)\]'
 
 [aws]
 symbol = " "
@@ -65,12 +193,6 @@ format = '\[[$symbol$branch]($style)\]'
 [gcloud]
 symbol = " "
 format = '\[[$symbol$account(@$domain)(\($region\))]($style)\]'
-[git_branch]
-symbol = " "
-format = '\[[$symbol$branch]($style)\]'
-[git_commit]
-tag_symbol = '  '
-format = '\[[\($hash$tag\)]($style)\]'
 [golang]
 symbol = " "
 format = '\[[$symbol($version)]($style)\]'
@@ -231,12 +353,7 @@ format = '\[[$symbol($version)(🎯 $tfm)]($style)\]'
 format = '\[[$symbol($version)]($style)\]'
 [fossil_metrics]
 format = '\[[+$added]($added_style)\]\[[-$deleted]($deleted_style)\]'
-[git_metrics]
-format = '\[[+$added]($added_style)\]\[[-$deleted]($deleted_style)\]'
-[git_state]
-format = '\[[$state ($progress_current/$progress_total)]($style)\]'
-[git_status]
-format = '([\[$all_status$ahead_behind\]]($style))'
+
 [gleam]
 format = '\[[$symbol($version)]($style)\]'
 [helm]
@@ -245,8 +362,11 @@ format = '\[[$symbol($version)]($style)\]'
 format = '\[[$symbol$number]($style)\]'
 [kubernetes]
 format = '\[[$symbol$context( \($namespace\))]($style)\]'
+
 [localip]
+disabled = false
 format = '\[[$localipv4]($style)\]'
+
 [mise]
 format = '\[[$symbol$health]($style)\]'
 [mojo]
@@ -285,8 +405,6 @@ format = '\[[$symbol$environment]($style)\]'
 format = '\[[as $symbol]($style)\]'
 [terraform]
 format = '\[[$symbol$workspace]($style)\]'
-[time]
-format = '\[[$time]($style)\]'
 [typst]
 format = '\[[$symbol($version)]($style)\]'
 [username]

@@ -38,7 +38,12 @@ function M.operation_in_split(operation)
     vim.api.nvim_win_set_buf(split_win_id, current_buf)
     vim.api.nvim_win_set_cursor(split_win_id, cursor_pos)
   else
-    vim.api.nvim_open_win(0, true, { split = 'right', win = 0, })
+    if vim.o.columns / vim.o.lines > 2.5 then
+      vim.cmd('vsplit')
+    else
+      vim.cmd('split')
+    end
+    -- vim.api.nvim_open_win(0, true, { split = 'right', win = 0, })
   end
   operation()
 end

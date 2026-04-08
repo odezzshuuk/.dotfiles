@@ -12,6 +12,8 @@ PS1='[\u@\h \W]\$ '
 
 export EDITOR='nvim'
 
+command fastfetch
+
 LFCD="$HOME/.config/lf/lfcd.sh"
 if [ -f "$LFCD" ]; then
     source "$LFCD"
