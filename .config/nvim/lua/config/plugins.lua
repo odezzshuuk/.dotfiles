@@ -6,11 +6,10 @@ vim.pack.add({
   { src = "https://github.com/github/copilot.vim" },
 
   -- extension api
-  { src = "https://github.com/nvim-lua/popup.nvim" },   -- An implementation of the Popup API from vim in Neovim
   { src = "https://github.com/nvim-lua/plenary.nvim" }, -- Useful lua functions used ny lots of plugins
 
   -- appearance
-  { src = "lukas-reineke/indent-blankline.nvim", },
+  { src = "https://github.com/lukas-reineke/indent-blankline.nvim", },
 
   -- theme
   { src = "https://github.com/rebelot/kanagawa.nvim" },
@@ -80,7 +79,7 @@ vim.pack.add({
   -- edit
   {
     src = "https://github.com/kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    version = vim.version.range("4.x"), -- Use for stability; omit to use `main` branch for the latest features
   },
   {
     src = 'https://github.com/smoka7/hop.nvim',
@@ -92,17 +91,7 @@ vim.pack.add({
   { src = "https://github.com/mfussenegger/nvim-dap", },
 
   -- tmux seamless
-  {
-    src = "https://github.com/christoomey/vim-tmux-navigator",
-    cmd = {
-      "TmuxNavigateLeft",
-      "TmuxNavigateDown",
-      "TmuxNavigateUp",
-      "TmuxNavigateRight",
-      "TmuxNavigatePrevious",
-      "TmuxNavigatorProcessList",
-    },
-  },
+  { src = "https://github.com/christoomey/vim-tmux-navigator", },
 
   -- my plugin
   {

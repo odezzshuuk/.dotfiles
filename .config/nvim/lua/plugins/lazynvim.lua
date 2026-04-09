@@ -21,7 +21,6 @@ require("lazy").setup({
   "github/copilot.vim",
 
   -- extension api
-  "nvim-lua/popup.nvim",   -- An implementation of the Popup API from vim in Neovim
   "nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
 
   -- appearance
@@ -37,13 +36,7 @@ require("lazy").setup({
   "HiPhish/rainbow-delimiters.nvim",
 
   -- which key
-  {
-    "folke/which-key.nvim",
-    init = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 200
-    end,
-  },
+  { "folke/which-key.nvim", },
 
   -- cmp
   {
@@ -79,7 +72,6 @@ require("lazy").setup({
   "mason-org/mason.nvim",             -- simple to use language server installer
   {
     "mason-org/mason-lspconfig.nvim", -- simple to use language server installer
-    -- version = "v1.32.0",  -- for working with require("lspconfig")[lang].setup({})
   },
   "nvimtools/none-ls.nvim",
   { 'Issafalcon/lsp-overloads.nvim' },
@@ -134,14 +126,6 @@ require("lazy").setup({
   -- tmux seamless
   {
     "christoomey/vim-tmux-navigator",
-    cmd = {
-      "TmuxNavigateLeft",
-      "TmuxNavigateDown",
-      "TmuxNavigateUp",
-      "TmuxNavigateRight",
-      "TmuxNavigatePrevious",
-      "TmuxNavigatorProcessList",
-    },
   },
 
   -- my plugin
