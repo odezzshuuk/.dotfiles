@@ -2,7 +2,7 @@ local lualine = require("lualine")
 local palette = require("plugins.mini").palette
 
 local show_in_width = function()
-  return vim.fn.winwidth(0) > vim.api.nvim_get_option("columns") * 0.6
+  return vim.fn.winwidth(0) > vim.api.nvim_get_option_value("columns", {}) * 0.6
 end
 
 local git_hash_suffix = "%[([0-9a-fA-F]+)%]$"
@@ -165,15 +165,6 @@ local workspace = {
   cond = show_in_width,
 }
 
--- local progress = function()
--- 	local current_line = vim.fn.line(".")
--- 	local total_lines = vim.fn.line("$")
--- 	local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
--- 	local line_ratio = current_line / total_lines
--- 	local index = math.ceil(line_ratio * #chars)
--- 	return chars[index]
--- end
-
 local progress = {
   "progress",
   padding = 0,
@@ -181,18 +172,6 @@ local progress = {
     return " " .. str
   end
 }
-
-
-local function rgb_escaper(hex)
-  local dec = tonumber(hex:sub(2), 16)
-  local b = math.fmod(dec, 256)
-  local g = math.fmod((dec - b) / 256, 256)
-  local r = math.floor(dec / (256 * 256))
-
-  return string.format("\27[38;2;%d;%d;%dm", r, g, b)
-end
-
-local color_reset = "\27[0m"
 
 local copilot_indicator = {
   function()

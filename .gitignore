@@ -35,9 +35,10 @@
 
 # .tmux directory
 !.tmux/
+!.tmux/**
 
 !.copilot/
-!.copilot/**
+!.copilot/skills/
 
 # Keep these specific ignore patterns
 *.img

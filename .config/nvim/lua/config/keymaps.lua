@@ -8,7 +8,7 @@ local toggle_inlay_hints = require('utils').toggle_inlay_hints
 local operation_in_split = require('utils').operation_in_split
 local toggle_window_maximize_equalize = require('utils').toggle_window_maximize_equalize
 local toggle_diagnostic_virtual_text = require("utils").toggle_diagnostic_virtual_text
-local fzf_lua_opts = require('plugins.fzf-lua').opts
+local fzf_lua_opts = require "plugins.fzf-lua".opts
 
 local toggle_mini_files = require("plugins.mini").toggle_mini_files
 local borders = require('utils').listed_borders
@@ -18,6 +18,7 @@ local opts_desc = function(desc) if desc then
   end
   return { noremap = true, silent = true }
 end
+
 
 local toggle_current_line_or_with_count = function()
   return vim.v.count == 0
@@ -179,8 +180,6 @@ vim.keymap.set('n', "<leader>sr", "<cmd>FzfLua oldfiles<cr>", opts_desc("Open Re
 -- hop -------
 ---@diagnostic disable: missing-parameter
 vim.keymap.set("n", "s", function() hop.hint_char2() end, { remap = true })
-
--- comment -----------
 
 vim.keymap.del('n', 'grn')
 vim.keymap.del('n', 'gra')

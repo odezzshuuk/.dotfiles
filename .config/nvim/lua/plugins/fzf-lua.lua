@@ -2,8 +2,7 @@ local actions = require "fzf-lua.actions"
 local fzf_lua = require "fzf-lua"
 
 local fd_exclude =
-    [[--exclude '.git/' ]]
-    .. [[--exclude node_modules/ ]]
+    [[--exclude '.git/' ]] .. [[--exclude node_modules/ ]]
     .. [[--exclude 'cache/' ]]
     .. [[--exclude '*.cache' ]]
     .. [[--exclude '.venv/' ]]
@@ -15,7 +14,8 @@ local fd_exclude =
     .. [[--exclude '*.pdf' ]]
     .. [[--exclude '*.mkv' ]]
     .. [[--exclude '*.mp4' ]]
-    .. [[--exclude '*.jpg' ]] .. [[--exclude '*.png' ]]
+    .. [[--exclude '*.jpg' ]]
+    .. [[--exclude '*.png' ]]
     .. [[--exclude '*.psd' ]]
     .. [[--exclude '*.zip' ]]
     .. [[--exclude '.next/' ]]
@@ -31,35 +31,9 @@ local fd_exclude =
     .. [[--exclude '*.fbx' ]]
     .. [[--exclude '*.controller' ]]
 
-local rg_exclude = 
-    [[--glob '!.git/**' ]]
-    .. [[--glob '!cache/**' ]]
-    .. [[--glob '!node_modules/**' ]]
-    .. [[--glob '!.venv/**' ]]
-    .. [[--glob '!__pycache__/**' ]]
-    .. [[--glob '!.next/**' ]]
-    .. [[--glob '!*.cache' ]]
-    .. [[--glob '!*.o' ]]
-    .. [[--glob '!*.a' ]]
-    .. [[--glob '!*.out' ]]
-    .. [[--glob '!*.class' ]]
-    .. [[--glob '!*.pdf' ]]
-    .. [[--glob '!*.mkv' ]]
-    .. [[--glob '!*.mp4' ]]
-    .. [[--glob '!*.jpg' ]]
-    .. [[--glob '!*.png' ]]
-    .. [[--glob '!*.psd' ]]
-    .. [[--glob '!*.zip' ]]
-
-    -- unity
-    .. [[--glob '!Temp/**' ]]
-    .. [[--glob '!Library/**)' ]]
-    .. [[--glob '!*.meta' ]]
-    .. [[--glob '!*.unity' ]]
-    .. [[--glob '!*.prefab' ]]
-    .. [[--glob '!*.asset' ]]
-    .. [[--glob '!*.fbx' ]]
-    .. [[--glob '!*.controller' ]]
+local workspace_path = vim.fn.getcwd()
+local rg_include =
+    [[ .github ]]
 
 local git_status_exclude = [["\.(meta|unity|prefab|asset|fbx|controller|xsd)$"]]
 
@@ -535,7 +509,7 @@ local opts = {
     -- otherwise auto-detect prioritizes `rg` over `grep`
     -- default options are controlled by 'rg|grep_opts'
     -- cmd            = "rg --vimgrep",
-    rg_opts        = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
+    rg_opts        = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 --ignore-file ~/.config/nvim/rg-white-list -e",
     grep_opts      = "--binary-files=without-match --line-number --recursive --color=auto --perl-regexp -e --no-require-git",
     -- set to 'true' to always parse globs in both 'grep' and 'live_grep'
     -- search strings will be split using the 'glob_separator' and translated
