@@ -1,0 +1,28 @@
+# Assumes swaylock is the session locker.
+before-sleep ''
+after-resume ''
+
+timeout 5 'echo "Going to sleep"'
+
+# screen dark
+timeout 600 'brightnessctl -s set 10' resume 'brightnessctl -r'
+
+# lock screen
+timeout 900 'loginctl lock-session'
+
+# turn off screen
+timeout 1200 'niri msg action power-off-monitors' resume 'niri msg action power-on-monitors'
+
+# suspend
+timeout 1800 'systemctl suspend'
+
+# ExecStart=/usr/bin/swayidle -w 
+#   timeout 601 'niri msg action power-off-monitors' 
+#   timeout 600 'swaylock -f' 
+#   before-sleep 'swaylock -f'
+#
+# swayidle -w \
+# 	timeout 300 'swaylock -f -c 000000' \
+# 	timeout 600 'swaymsg "output * power off"' \
+# 		resume 'swaymsg "output * power on"' \
+# 	before-sleep 'swaylock -f -c 000000'

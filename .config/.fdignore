@@ -32,4 +32,47 @@
 !rofi/
 !rofi/**
 
+!foot/
+!foot/**
+
+!gtk-3.0/
+!gtk-3.0/**
+
+!systemd/
+!systemd/user/
+!systemd/user/*.service
+!systemd/user/*.timer
+
+!blender/
+!blender/**
+
+# ignore all files in directory
+blender/*/scripts/*
+# unignore directory
+!blender/*/scripts/presets/
+# ignore all files in directory
+blender/*/scripts/presets/*
+# unignore interface_theme directory
+!blender/*/scripts/presets/interface_theme/
+
+blender/*/extensions/
+
+blender/*/config/*
+!blender/*/config/startup.blend
+!blender/*/config/userpref.blend
+
+!matugen/
+!matugen/**
+
+!yazi/
+!yazi/**
+
+!niri/
+!niri/**
+
+!starship.toml
+
+!swayidle/
+!swayidle/**
+
 !.fdignore

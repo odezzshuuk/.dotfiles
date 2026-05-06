@@ -1,0 +1,8 @@
+[Unit]
+Description=swaybg random wallpaper 
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/swaybg_random.sh
+Environment=DISPLAY=:0
+Environment=SWAYSOCK=/run/user/%U/sway-ipc.%U.%I.sock

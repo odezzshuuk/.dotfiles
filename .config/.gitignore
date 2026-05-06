@@ -72,4 +72,13 @@ blender/*/config/*
 
 !starship.toml
 
+!swayidle/
+!swayidle/**
+
+!swaylock/
+!swaylock/**
+
+!fuzzel/
+!fuzzel/**
+
 !.fdignore
