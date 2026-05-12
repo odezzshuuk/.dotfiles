@@ -10,3 +10,5 @@ spawn-at-startup "hypridle"
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
 // spawn-sh-at-startup "systemctl --user start swaybg-switch.timer"
+spawn-sh-at-startup "swaybg_random.sh"
+spawn-sh-at-startup "dms run"

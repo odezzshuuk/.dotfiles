@@ -3,7 +3,6 @@ if not status_ok then
   return
 end
 
-telescope.load_extension("media_files")
 local lst = telescope.load_extension("luasnip")
 local luasnip = require("luasnip")
 
@@ -143,12 +142,6 @@ telescope.setup({
   },
 
   extensions = {
-    media_files = {
-      -- filetypes whitelist
-      -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
-      filetypes = { "png", "webp", "jpg", "jpeg" },
-      find_cmd = "rg", -- find command (defaults to `fd`)
-    },
     luasnip = {
       search = function(entry)
         return lst.filter_null(entry.context.trigger)

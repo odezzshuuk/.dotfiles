@@ -85,7 +85,6 @@ end
 
 function M.toggle_window_maximize_equalize()
   local current_tab = vim.api.nvim_get_current_tabpage()
-  local current_win = vim.api.nvim_get_current_win()
   local wins = vim.api.nvim_tabpage_list_wins(current_tab)
   local normal_wins = {}
 
@@ -99,26 +98,23 @@ function M.toggle_window_maximize_equalize()
     return
   end
 
-  local state = win_layout_state[current_tab]
-  if state and state.maximized_win == current_win then
-    vim.cmd('wincmd =')
-    win_layout_state[current_tab] = nil
-    return
+  local maximized = false;
+
+  if vim.fn.winwidth(0) < vim.api.nvim_get_option_value("columns", {}) * 0.85 then
+    vim.cmd('wincmd |')
+    maximized = true
   end
 
-  local ok_height = pcall(function()
+  if vim.fn.winheight(0) < vim.api.nvim_get_option_value("lines", {}) * 0.85 then
     vim.cmd('wincmd _')
-  end)
-  local ok_width = pcall(function()
-    vim.cmd('wincmd |')
-  end)
+    maximized = true
+  end
 
-  if ok_height and ok_width then
-    win_layout_state[current_tab] = {
-      maximized_win = current_win,
-    }
+  if not maximized then
+    vim.cmd('wincmd =')
   end
 end
+
 
 M.listed_borders = {
   { "▛", "▀", "▜", "▐", "▟", "▄", "▙", "▌" },

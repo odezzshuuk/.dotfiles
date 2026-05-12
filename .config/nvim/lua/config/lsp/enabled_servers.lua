@@ -13,7 +13,7 @@ return {
   "html",
   "cssls",
   "vue_ls",
-  "vtsls",
+  -- "vtsls",
   "rust_analyzer",
   "eslint",
 }

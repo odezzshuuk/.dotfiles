@@ -1,5 +1,5 @@
-local actions = require "fzf-lua.actions"
 local fzf_lua = require "fzf-lua"
+local actions = require "fzf-lua.actions"
 
 local fd_exclude =
     [[--exclude '.git/' ]] .. [[--exclude node_modules/ ]]
@@ -911,7 +911,7 @@ local opts = {
 }
 
 require('fzf-lua').setup(opts)
-vim.cmd('FzfLua register_ui_select')
+-- vim.cmd('FzfLua register_ui_select')
 
 return {
   -- temporary solution for lsp references with fzf commands

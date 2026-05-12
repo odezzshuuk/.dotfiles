@@ -142,7 +142,8 @@ cmp.setup({
 		select = false,
 	},
 	window = {
-		-- documentation = cmp.config.window.bordered(),
+		completion = cmp.config.window.bordered({ border = "rounded", winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None" }),
+		documentation = cmp.config.window.bordered({ border = "rounded", winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None" }),
 	},
 	experimental = {
 		ghost_text = false,

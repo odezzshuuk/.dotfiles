@@ -39,7 +39,6 @@ vim.pack.add({
 
   -- telescope
   { src = "https://github.com/nvim-telescope/telescope.nvim", },
-  { src = "https://github.com/nvim-telescope/telescope-media-files.nvim" },
   { src = "https://github.com/benfowler/telescope-luasnip.nvim" },
   { src = "https://github.com/ibhagwan/fzf-lua", },
   { src = "https://github.com/nvim-tree/nvim-web-devicons" },
@@ -81,9 +80,7 @@ vim.pack.add({
     src = "https://github.com/kylechui/nvim-surround",
     version = vim.version.range("4.x"), -- Use for stability; omit to use `main` branch for the latest features
   },
-  {
-    src = 'https://github.com/smoka7/hop.nvim',
-  },
+  { src = 'https://github.com/smoka7/hop.nvim' },
   { src = 'https://github.com/windwp/nvim-autopairs' },
   { src = "https://github.com/windwp/nvim-ts-autotag" },
 
@@ -99,5 +96,3 @@ vim.pack.add({
     version = "dev",
   },
 })
-
-require("nvim-surround").setup()

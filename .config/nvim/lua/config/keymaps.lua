@@ -20,12 +20,6 @@ local opts_desc = function(desc) if desc then
 end
 
 
-local toggle_current_line_or_with_count = function()
-  return vim.v.count == 0
-      and '<Plug>(comment_toggle_linewise_current)'
-      or '<Plug>(comment_toggle_linewise_count)'
-end
-
 --Remap space as leader key
 vim.keymap.set("", "<Space>", "<Nop>", opts_desc())
 vim.g.mapleader = " "
@@ -177,6 +171,9 @@ vim.keymap.set('n', "<leader>sh", "<cmd>FzfLua helptags<cr>", opts_desc("Find He
 vim.keymap.set('n', "<leader>sk", "<cmd>FzfLua keymaps<cr>", opts_desc("Keymaps"))
 vim.keymap.set('n', "<leader>sr", "<cmd>FzfLua oldfiles<cr>", opts_desc("Open Recent File"))
 
+------------------ Inspect -----------------
+vim.keymap.set('n', "<leader>if", "<cmd>FileDetail<cr>", opts_desc("File Detail"))
+
 -- hop -------
 ---@diagnostic disable: missing-parameter
 vim.keymap.set("n", "s", function() hop.hint_char2() end, { remap = true })
@@ -187,5 +184,6 @@ vim.keymap.del('n', 'grr')
 vim.keymap.del('n', 'gri')
 vim.keymap.del('n', 'gO')
 vim.keymap.del('n', 'grt')
+vim.keymap.del('n', 'grx')
 
 -- vim.keymap.del("n", "<c-w>-")  -- disable window height decrease
