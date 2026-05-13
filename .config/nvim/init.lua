@@ -24,9 +24,9 @@ else
   require "plugins.copilot"
   require "plugins.functions"
 
+  require "config.options"
   require "config.keymaps"
   require "config.color-scheme"
-  require "config.options"
   require "config.private"
   require "config.commands"
   require "config.auto-commands"

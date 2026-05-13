@@ -165,8 +165,7 @@ end
 return {
   name = 'roslyn_ls',
   cmd = {
-    vim.fn.executable('Microsoft.CodeAnalysis.LanguageServer') == 1 and 'Microsoft.CodeAnalysis.LanguageServer'
-      or 'roslyn-language-server',
+    vim.env.HOME .. '/.vscode/extensions/ms-dotnettools.csharp-2.130.5-linux-x64/.roslyn/Microsoft.CodeAnalysis.LanguageServer',
     '--logLevel',
     'Information',
     '--extensionLogDirectory',

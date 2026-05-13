@@ -71,6 +71,9 @@ local colors_overwrite = {
 
   DiagnosticError = { fg = "#eb302a" },
   DiagnosticWarn = { fg = "#eafc00" },
+  DiagnosticInfo = { fg = "#95e6cb" },
+  DiagnosticHint = { fg = "#c35ac8"},
+
   DiffAdd    = { fg = nil, bg = mini_palette.green_bg },
   DiffChange = { fg = nil, bg = mini_palette.cyan_bg },
   DiffDelete = { fg = nil, bg = mini_palette.red_bg },
