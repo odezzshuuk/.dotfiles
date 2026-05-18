@@ -165,7 +165,7 @@ end
 return {
   name = 'roslyn_ls',
   cmd = {
-    vim.env.HOME .. '/.vscode/extensions/ms-dotnettools.csharp-2.130.5-linux-x64/.roslyn/Microsoft.CodeAnalysis.LanguageServer',
+    vim.env.HOME .. '/.vscode/extensions/ms-dotnettools.csharp-2.140.8-linux-x64/.roslyn/Microsoft.CodeAnalysis.LanguageServer',
     '--logLevel',
     'Information',
     '--extensionLogDirectory',
@@ -345,7 +345,9 @@ return {
   settings = {
     ['csharp|background_analysis'] = {
       dotnet_analyzer_diagnostics_scope = 'fullSolution',
-      dotnet_compiler_diagnostics_scope = 'fullSolution',
+
+      -- comment next line to avoid duplicate diagnostics messages
+      -- dotnet_compiler_diagnostics_scope = 'fullSolution',
     },
     ['csharp|inlay_hints'] = {
       csharp_enable_inlay_hints_for_implicit_object_creation = true,

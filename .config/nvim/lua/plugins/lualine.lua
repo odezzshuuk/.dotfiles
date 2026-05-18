@@ -30,7 +30,7 @@ local theme = {
 local diagnostics = {
   "diagnostics",
   separator = { right = "" },
-  sources = { "nvim_lsp", "vim_lsp" },
+  sources = { "nvim_diagnostic" },
   symbols = { error = " ", warn = " ", info = " " },
   sections = { "error", "warn", "info" },
   update_in_insert = false,

@@ -911,7 +911,7 @@ local opts = {
 }
 
 require('fzf-lua').setup(opts)
--- vim.cmd('FzfLua register_ui_select')
+vim.schedule(function() vim.cmd('FzfLua register_ui_select') end)
 
 return {
   -- temporary solution for lsp references with fzf commands

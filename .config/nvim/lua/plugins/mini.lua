@@ -139,7 +139,10 @@ mini_comment.setup(mini_comment_config)
 mini_files.setup(mini_files_opts)
 hipatterns.setup(hipatterns_config)
 mini_notify.setup({
-  lsp_progress = { duration_last = 10000 },
+  lsp_progress = {
+    enable = false,
+    duration_last = 10000
+  },
   window = {
     max_width_share = 0.5,
   }
