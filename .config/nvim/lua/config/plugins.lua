@@ -1,3 +1,14 @@
+vim.api.nvim_create_autocmd("PackChanged", {
+  callback = function(ev)
+    local name, kind = ev.data.spec.name, ev.data.kind
+    vim.print("PackChanged event triggered for plugin: " .. name .. " with kind: " .. kind)
+    if name == "strudel.nvim" and (kind == "install" or kind == "update") then
+      vim.print("Building strudel.nvim... triggered by PackChanged event")
+      vim.system({ "npm", "ci" } , { cwd = ev.data.path })
+    end
+  end,
+})
+
 vim.pack.add({
   -- useful module packer
   { src = 'https://github.com/nvim-mini/mini.nvim', version = 'stable' },
@@ -65,7 +76,7 @@ vim.pack.add({
   { src = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring" },
 
   -- git
-  {src = "https://github.com/lewis6991/gitsigns.nvim" },
+  { src = "https://github.com/lewis6991/gitsigns.nvim" },
   { src = "https://github.com/nvim-tree/nvim-web-devicons"},
   {
     src = "https://github.com/sindrets/diffview.nvim",
@@ -90,9 +101,13 @@ vim.pack.add({
   -- tmux seamless
   { src = "https://github.com/christoomey/vim-tmux-navigator", },
 
+  -- strudel
+  { src = "https://github.com/gruvw/strudel.nvim" },
+
   -- my plugin
   {
     src = "https://github.com/odezzshuuk/mini-functions.nvim",
     version = "dev",
   },
 })
+

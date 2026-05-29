@@ -23,6 +23,7 @@ else
   require "plugins.whichkey"
   require "plugins.copilot"
   require "plugins.functions"
+  require "plugins.strudel"
 
   require "config.options"
   require "config.keymaps"

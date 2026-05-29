@@ -20,7 +20,7 @@ function _fzf_change_directory
     ghq list -p  
 
     # Code/ directory
-    fd '^\.git$' "$HOME/Code/" -d 3 -H -I --prune --exec echo {//}
+    fd '^\.git$|^PKGBUILD$' "$HOME/Code/" -d 3 -H -I --prune --exec echo {//}
     echo "$HOME/.local/share/wallpapers"
     echo "$HOME/.local/bin"
     echo "$HOME/Downloads"

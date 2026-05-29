@@ -174,6 +174,15 @@ vim.keymap.set('n', "<leader>sr", "<cmd>FzfLua oldfiles<cr>", opts_desc("Open Re
 ------------------ Inspect -----------------
 vim.keymap.set('n', "<leader>if", "<cmd>FileDetail<cr>", opts_desc("File Detail"))
 
+------------------ Strudel -----------------
+vim.keymap.set("n", "<leader>tl", "<cmd>StrudelLaunch<cr>", { desc = "Launch Strudel" })
+vim.keymap.set("n", "<leader>tq", "<cmd>StrudelQuit<cr>", { desc = "Quit Strudel" })
+vim.keymap.set("n", "<leader>tt", "<cmd>StrudelToggle<cr>", { desc = "Strudel Toggle Play/Stop" })
+vim.keymap.set("n", "<leader>tu", "<cmd>StrudelUpdate<cr>", { desc = "Strudel Update" })
+vim.keymap.set("n", "<leader>ts", "<cmd>StrudelStop<cr>", { desc = "Strudel Stop Playback" })
+vim.keymap.set("n", "<leader>tb", "<cmd>StrudelSet_buffer<cr>", { desc = "Strudel set current buffer" })
+vim.keymap.set("n", "<leader>tx", "<cmd>StrudelExecute<cr>", { desc = "Strudel set current buffer and update" })
+
 -- hop -------
 ---@diagnostic disable: missing-parameter
 vim.keymap.set("n", "s", function() hop.hint_char2() end, { remap = true })

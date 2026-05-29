@@ -40,14 +40,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
   group = "LspOnAttach",
   pattern = "*",
   callback = function(e)
-  local client = vim.lsp.get_client_by_id(e.data.client_id)
+    local client = vim.lsp.get_client_by_id(e.data.client_id)
 
-  if not client then
-    return
-  end
+    if not client then
+      return
+    end
 
-  if client.server_capabilities.signatureHelpProvider then
-    require("lsp-overloads").setup(client, lsp_overloads_opts)
-  end
+    if client.server_capabilities.signatureHelpProvider then
+      require("lsp-overloads").setup(client, lsp_overloads_opts)
+    end
   end,
 })
