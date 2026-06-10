@@ -100,12 +100,12 @@ function M.toggle_window_maximize_equalize()
 
   local maximized = false;
 
-  if vim.fn.winwidth(0) < vim.api.nvim_get_option_value("columns", {}) * 0.85 then
+  if vim.fn.winwidth(0) < vim.api.nvim_get_option_value("columns", {}) * 0.95 then
     vim.cmd('wincmd |')
     maximized = true
   end
 
-  if vim.fn.winheight(0) < vim.api.nvim_get_option_value("lines", {}) * 0.85 then
+  if vim.fn.winheight(0) < vim.api.nvim_get_option_value("lines", {}) * 0.95 then
     vim.cmd('wincmd _')
     maximized = true
   end

@@ -1,4 +1,4 @@
-require("strudel").setup({
+require("strudelPWA").setup({
   -- Strudel web user interface related options
   ui = {
     -- Maximise the menu panel
@@ -19,8 +19,7 @@ require("strudel").setup({
   },
   -- Automatically start playback when launching Strudel
   -- (optional, default: true)
-  start_on_launch = false,
-  -- Set to `true` to automatically trigger the code evaluation after saving the buffer content
+  start_on_launch = false, -- Set to `true` to automatically trigger the code evaluation after saving the buffer content
   -- Only works if the playback was already started (doesn't start the playback on save)
   -- (optional, default: false)
   update_on_save = false,
@@ -37,15 +36,7 @@ require("strudel").setup({
   -- Headless mode: set to `true` to run the browser without launching a window
   -- (optional, default: false)
   headless = false,
-  -- Path to the directory where Strudel browser user data (cookies, sessions, etc.) is stored
-  -- (optional, default: "~/.cache/strudel-nvim/")
-  browser_data_dir = "~/.cache/strudel-nvim/",
   -- Path to a (chromium-based) browser executable of choice
   -- (optional, defau-- lt: nil)
-  -- browser_exec_path ="/opt/brave-bin/brave --profile-directory=Default --app-id=camedmhajlokcgipjhegkdobhmafconk",
   browser_exec_path = "/opt/brave-bin/brave",
-  -- Custom URL for Strudel
-  -- (optional, default: "https://cold.strudel.cc/")
-  -- strudel_url = "https://cold.strudel.cc/",
-  strudel_url = "https://strudel.cc/",
 })

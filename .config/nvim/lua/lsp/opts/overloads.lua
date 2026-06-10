@@ -1,4 +1,4 @@
-local lsp_overloads_opts = {
+return {
   ui = {
     border = "single", -- The border to use for the signature popup window. Accepts same border values as |nvim_open_win()|.
     height = nil,      -- Height of the signature popup window (nil allows dynamic sizing based on content of the help)
@@ -35,19 +35,3 @@ local lsp_overloads_opts = {
   display_automatically = true -- Uses trigger characters to automatically display the signature overloads when typing a method signature
 
 }
-
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = "LspOnAttach",
-  pattern = "*",
-  callback = function(e)
-    local client = vim.lsp.get_client_by_id(e.data.client_id)
-
-    if not client then
-      return
-    end
-
-    if client.server_capabilities.signatureHelpProvider then
-      require("lsp-overloads").setup(client, lsp_overloads_opts)
-    end
-  end,
-})

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# sudo tcpdump -nn -s0 -i any -w ~/.cache/traffic_capture.pcap 'port 80 or port 443'
+sudo tcpdump -i any -s 0 'port 80 or port 443 and (greater 0)'

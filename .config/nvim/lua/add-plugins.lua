@@ -2,7 +2,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
   callback = function(ev)
     local name, kind = ev.data.spec.name, ev.data.kind
     vim.print("PackChanged event triggered for plugin: " .. name .. " with kind: " .. kind)
-    if name == "strudel.nvim" and (kind == "install" or kind == "update") then
+    if name == "strudelPWA.nvim" and (kind == "install" or kind == "update") then
       vim.print("Building strudel.nvim... triggered by PackChanged event")
       vim.system({ "npm", "ci" } , { cwd = ev.data.path })
     end
@@ -11,9 +11,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
 
 vim.pack.add({
   -- useful module packer
-  { src = 'https://github.com/nvim-mini/mini.nvim', version = 'stable' },
-
-  -- ai completion
+  { src = 'https://github.com/nvim-mini/mini.nvim', version = 'stable' }, -- ai completion
   { src = "https://github.com/github/copilot.vim" },
 
   -- extension api
@@ -102,12 +100,13 @@ vim.pack.add({
   { src = "https://github.com/christoomey/vim-tmux-navigator", },
 
   -- strudel
-  { src = "https://github.com/gruvw/strudel.nvim" },
+  -- { src = "https://github.com/gruvw/strudel.nvim" },
 
   -- my plugin
   {
     src = "https://github.com/odezzshuuk/mini-functions.nvim",
     version = "dev",
   },
+  { src = "https://github.com/odezzshuuk/strudelPWA.nvim" },
 })
 

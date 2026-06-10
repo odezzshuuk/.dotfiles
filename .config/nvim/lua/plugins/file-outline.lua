@@ -14,6 +14,15 @@ local opts = {
 
     -- Percentage or integer of columns
     width = 25,
+
+    auto_width = {
+      -- Dynamically resize window width to fit content
+      enabled = true,
+      -- Maximum width (columns or percent if relative_width)
+      max_width = 40,
+      -- Include symbol details in width calculation
+      include_symbol_details = false,
+    },
     -- Whether width is relative to the total width of nvim
     -- When relative_width = true, this means take 25% of the total
     -- screen width for outline window.

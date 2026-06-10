@@ -1,8 +1,5 @@
-local hop = require("hop")
-
-local opts = {
+require('hop').setup {
   keys = 'etovxqpdygfblzhckisuran'
 }
 
-hop.setup(opts)
 

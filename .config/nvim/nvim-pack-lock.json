@@ -164,9 +164,9 @@
       "rev": "08783ec022e7ddefe0f12a16f1ac4968f55478b0",
       "src": "https://github.com/HiPhish/rainbow-delimiters.nvim"
     },
-    "strudel.nvim": {
-      "rev": "3a7e62c9048a318281328ad08d6269e50b884cd3",
-      "src": "https://github.com/gruvw/strudel.nvim"
+    "strudelPWA.nvim": {
+      "rev": "b861ca450c3f746e763c27e0befde94efe8095cc",
+      "src": "https://github.com/odezzshuuk/strudelPWA.nvim"
     },
     "telescope-luasnip.nvim": {
       "rev": "07a2a2936a7557404c782dba021ac0a03165b343",

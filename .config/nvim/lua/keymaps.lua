@@ -1,7 +1,6 @@
 local fzf_lua = require('fzf-lua')
 local gitsigns = require('gitsigns')
 local hop = require("hop")
-local mini_comment = require("mini.comment")
 
 local diagnostic_goto_opts = require('utils').diagnostic_goto_opts
 local toggle_inlay_hints = require('utils').toggle_inlay_hints
@@ -52,7 +51,7 @@ vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", opts_desc())
 vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", opts_desc())
 vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", opts_desc())
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", opts_desc())
-vim.keymap.set("n", "<c-w>z", toggle_window_maximize_equalize, opts_desc("Toggle maximize/equalize window layout"))
+vim.keymap.set("n", "<leader>z", toggle_window_maximize_equalize, opts_desc("Toggle maximize/equalize window layout"))
 vim.keymap.set("n", "<c-w>h", ":split<CR>", opts_desc("Split window horizontally"))
 
 
@@ -119,8 +118,6 @@ vim.keymap.set(
 )
 
 vim.keymap.set('n', 'gl', function() vim.diagnostic.open_float() end, opts_desc())
-vim.keymap.set('n', 'gs', function() require('fzf-lua').lsp_live_workspace_symbols() end,
-  opts_desc("Workspace Symbols"))
 vim.keymap.set('n', '<leader>lf', function() vim.lsp.buf.format() end, opts_desc('Format'))
 vim.keymap.set('n', '<leader>lj', function() vim.diagnostic.jump(diagnostic_goto_opts(1)) end,
   opts_desc("Next Diagnostic"))
