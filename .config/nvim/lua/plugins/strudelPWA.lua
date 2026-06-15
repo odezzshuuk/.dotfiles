@@ -17,26 +17,19 @@ require("strudelPWA").setup({
     -- (optional, default: false)
     hide_error_display = false,
   },
-  -- Automatically start playback when launching Strudel
-  -- (optional, default: true)
-  start_on_launch = false, -- Set to `true` to automatically trigger the code evaluation after saving the buffer content
-  -- Only works if the playback was already started (doesn't start the playback on save)
-  -- (optional, default: false)
-  update_on_save = false,
-  -- Enable two-way cursor position sync between Neovim and Strudel editor
-  -- (optional, default: true)
-  sync_cursor = true,
+
+  browser = {
+    headless = false,
+    user_data_dir = vim.fn.expand("~/.cache/strudelPWA-nvim"),
+    browser_exec_path = "/opt/brave-bin/brave",
+  },
+
+  editor = {
+    update_on_save = false,
+    sync_cursor = true,
+    update_on_attach = false,
+  },
   -- Report evaluation errors from Strudel as Neovim notifications
   -- (optional, default: true)
   report_eval_errors = true,
-  -- Path to a custom CSS file to style the Strudel web editor (base64-encoded and injected at launch)
-  -- This allows you to override or extend the default Strudel UI appearance
-  -- (optional, default: nil)
-  -- custom_css_file = "/path/to/your/custom.css",
-  -- Headless mode: set to `true` to run the browser without launching a window
-  -- (optional, default: false)
-  headless = false,
-  -- Path to a (chromium-based) browser executable of choice
-  -- (optional, defau-- lt: nil)
-  browser_exec_path = "/opt/brave-bin/brave",
 })

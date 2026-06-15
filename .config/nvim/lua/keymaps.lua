@@ -135,6 +135,7 @@ vim.keymap.set('n', "<leader>ls", "<cmd>FzfLua lsp_document_symbols<cr>", opts_d
 vim.keymap.set('n', "<leader>lq", "<cmd>FzfLua lsp_live_workspace_symbols<cr>", opts_desc("Workspace Symbols"))
 vim.keymap.set('n', "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", opts_desc("CodeLens Action"))
 vim.keymap.set('n', '<leader>lh', toggle_inlay_hints, opts_desc("Toggle Inlay Hints"))
+vim.keymap.set({'n', 'i'}, '<C-s>', function() vim.lsp.buf.signature_help({ border = borders[1] }) end, opts_desc("Signature Help"))
 
 -- VCS ------------------
 vim.keymap.set('n', '<leader>vb', fzf_lua.git_branches, opts_desc("Git Branchs"))
@@ -172,7 +173,8 @@ vim.keymap.set('n', "<leader>sr", "<cmd>FzfLua oldfiles<cr>", opts_desc("Open Re
 vim.keymap.set('n', "<leader>if", "<cmd>FileDetail<cr>", opts_desc("File Detail"))
 
 ------------------ Strudel -----------------
-vim.keymap.set("n", "<leader>tl", "<cmd>StrudelLaunch<cr>", { desc = "Launch Strudel" })
+vim.keymap.set("n", "<leader>tl", "<cmd>StrudelStart<cr>", { desc = "Start Strudel" })
+vim.keymap.set("n", "<leader>ta", "<cmd>StrudelAttach<cr>", { desc = "Attach Strudel process" })
 vim.keymap.set("n", "<leader>tq", "<cmd>StrudelQuit<cr>", { desc = "Quit Strudel" })
 vim.keymap.set("n", "<leader>tt", "<cmd>StrudelToggle<cr>", { desc = "Strudel Toggle Play/Stop" })
 vim.keymap.set("n", "<leader>tu", "<cmd>StrudelUpdate<cr>", { desc = "Strudel Update" })
