@@ -122,13 +122,13 @@ vim.keymap.set('n', '<leader>lf', function() vim.lsp.buf.format() end, opts_desc
 vim.keymap.set('n', '<leader>lj', function() vim.diagnostic.jump(diagnostic_goto_opts(1)) end,
   opts_desc("Next Diagnostic"))
 vim.keymap.set('n', '<leader>lk', function() vim.diagnostic.jump(diagnostic_goto_opts(-1)) end,
-  opts_desc("Prev Disgnostic"))
+  opts_desc("Prev Diagnostic"))
 vim.keymap.set('n', '<leader>ld', function() require('fzf-lua').lsp_document_diagnostics() end,
   opts_desc("Document Diagnostics"))
 vim.keymap.set('n', '<leader>la', function() require('fzf-lua').lsp_code_actions() end, opts_desc("Code Actions"))
 vim.keymap.set('n', '<leader>lD', toggle_diagnostic_virtual_text,
-  { noremap = true, silent = true, desc = "Toggle disgnostic virtual text" })
-vim.keymap.set('n', '<leader>lw', function() require('fzf-lua').diagnostics_workspace() end,
+  { noremap = true, silent = true, desc = "Toggle diagnostic virtual text" })
+vim.keymap.set('n', '<leader>lw', function() require('fzf-lua').diagnostics_workspace({ sort = true }) end,
   opts_desc("Workspace Diagnostics"))
 vim.keymap.set('n', "<leader>lr", vim.lsp.buf.rename, opts_desc("Rename"))
 vim.keymap.set('n', "<leader>ls", "<cmd>FzfLua lsp_document_symbols<cr>", opts_desc("Document Symbols"))
