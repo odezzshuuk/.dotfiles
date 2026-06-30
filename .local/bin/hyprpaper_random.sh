@@ -10,7 +10,7 @@ hyprpaper_random() {
     # Apply the selected wallpaper
     hyprctl hyprpaper wallpaper ",$WALLPAPER" > /dev/null
     if type matugen >/dev/null 2>&1; then
-      matugen image "$WALLPAPER" > /dev/null
+      matugen image "$WALLPAPER" --source-color-index=1 > /dev/null
     fi
 }
 
