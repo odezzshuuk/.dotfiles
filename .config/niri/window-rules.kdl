@@ -36,8 +36,7 @@ window-rule {
 
 // godot debug window
 window-rule {
-    match app-id="^Godot$"
-    match title=".*\\(DEBUG\\).*$"
+    match app-id="^Godot$" title=".*\\(DEBUG\\).*$"
     open-floating true
 }
 
