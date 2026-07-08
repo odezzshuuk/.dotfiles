@@ -35,10 +35,10 @@ vim.g.maplocalleader = " "
 -- Aggregate Navigation
 -- vim.keymap.set("n", "<C-h>", "<C-w>h", opts_desc())
 -- vim.keymap.set("n", "<C-l>", "<C-w>l", opts_desc())
-vim.keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>", opts_desc())
-vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>", opts_desc())
-vim.keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>", opts_desc())
-vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>", opts_desc())
+vim.keymap.set("n", "<C-h>", "<C-w>h", opts_desc())
+vim.keymap.set("n", "<C-l>", "<C-w>l", opts_desc())
+vim.keymap.set("n", "<C-j>", "<C-w>j", opts_desc())
+vim.keymap.set("n", "<C-k>", "<C-w>k", opts_desc())
 
 -- quick move
 vim.keymap.set('n', '<A-j>', '10j', opts_desc())
