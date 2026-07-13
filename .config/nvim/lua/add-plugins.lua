@@ -55,10 +55,7 @@ vim.pack.add({
   -- lsp
   { src = "https://github.com/neovim/nvim-lspconfig" },
   { src = "https://github.com/mason-org/mason.nvim" },                   -- simple to use language server installer
-  {
-    src = "https://github.com/mason-org/mason-lspconfig.nvim", -- simple to use language server installer
-    -- version = "v1.32.0",  -- for working with require("lspconfig")[lang].setup({})
-  },
+  { src = "https://github.com/mason-org/mason-lspconfig.nvim", }, -- for simple using language server installer
   { src = "https://github.com/nvimtools/none-ls.nvim", },
   { src = 'https://github.com/Issafalcon/lsp-overloads.nvim' },
   { src = 'https://github.com/onsails/lspkind.nvim' },
@@ -83,8 +80,9 @@ vim.pack.add({
   -- file info
   { src = "https://github.com/nvim-lualine/lualine.nvim" },
   { src = "https://github.com/hedyhli/outline.nvim" },
+  { src = "https://github.com/Bekaboo/dropbar.nvim" },
 
-  -- edit
+  -- editting
   {
     src = "https://github.com/kylechui/nvim-surround",
     version = vim.version.range("4.x"), -- Use for stability; omit to use `main` branch for the latest features
@@ -104,7 +102,7 @@ vim.pack.add({
 
   -- my plugin
   {
-    src = "https://github.com/odezzshuuk/mini-functions.nvim",
+    src = "https://github.com/odezzshuuk/my-addons.nvim",
     version = "dev",
   },
   { src = "https://github.com/odezzshuuk/strudelPWA.nvim" },

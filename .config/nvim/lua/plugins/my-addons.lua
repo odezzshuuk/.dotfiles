@@ -1,0 +1,5 @@
+require('my-addons').setup({
+
+})
+
+

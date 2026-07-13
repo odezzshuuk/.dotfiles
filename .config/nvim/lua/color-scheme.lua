@@ -14,50 +14,8 @@ require('ayu').setup({
   }
 })
 
-
 vim.cmd('colorscheme ayu-dark')
 local mini_palette = require('plugins.mini').palette
--- {
---   accent = "#E6B450",
---   bg = "#0B0E14",
---   black = "#000000",
---   comment = "#636A72",
---   constant = "#D2A6FF",
---   entity = "#59C2FF",
---   error = "#D95757",
---   fg = "#BFBDB6",
---   fg_idle = "#565B66",
---   func = "#FFB454",
---   -- generate = <function 1>,
---   guide_active = "#3C414A",
---   guide_normal = "#1E222A",
---   gutter_active = "#626975",
---   gutter_normal = "#454B55",
---   keyword = "#FF8F40",
---   line = "#11151C",
---   lsp_inlay_hint = "#969696",
---   lsp_parameter = "#CB9FF8",
---   markup = "#F07178",
---   operator = "#F29668",
---   panel_bg = "#0F131A",
---   panel_border = "#000000",
---   panel_shadow = "#05070A",
---   regexp = "#95E6CB",
---   selection_bg = "#1B3A5B",
---   selection_border = "#304357",
---   selection_inactive = "#122132",
---   special = "#E6B673",
---   string = "#AAD94C",
---   tag = "#39BAE6",
---   ui = "#565B66",
---   vcs_added = "#7FD962",
---   vcs_added_bg = "#1D2214",
---   vcs_modified = "#73B8FF",
---   vcs_removed = "#F26D78",
---   vcs_removed_bg = "#2D2220",
---   warning = "#FF8F40",
---   white = "#FFFFFF"
--- }
 local ayu_palette = require('ayu.colors').generate()
 
 
@@ -65,14 +23,15 @@ local colors_overwrite = {
   Visual          = { bg = mini_palette.green, fg = mini_palette.bg_edge2 },
   LineNr          = { fg = "#626975" },
   WinSeparator    = { fg = "#73f8b1" },
+  WinBar          = { bg = mini_palette.bg_mid },
 
   FloatBorder     = { fg = "#fda339", bg = mini_palette.bg_edge },
-  NormalFloat     = { bg = mini_palette.bg_edge },
+  NormalFloat     = { bg = mini_palette.bg_mid},
 
   DiagnosticError = { fg = "#eb302a" },
-  DiagnosticWarn = { fg = "#eafc00" },
-  DiagnosticInfo = { fg = "#95e6cb" },
-  DiagnosticHint = { fg = "#e392e8"},
+  DiagnosticWarn  = { fg = "#eafc00" },
+  DiagnosticInfo  = { fg = "#95e6cb" },
+  DiagnosticHint  = { fg = "#e392e8"},
 
   DiffAdd    = { fg = nil, bg = mini_palette.green_bg },
   DiffChange = { fg = nil, bg = mini_palette.cyan_bg },
@@ -125,3 +84,45 @@ local colors_overwrite = {
 for hl, col in pairs(colors_overwrite) do
   vim.api.nvim_set_hl(0, hl, col)
 end
+
+-- {
+--   accent = "#E6B450",
+--   bg = "#0B0E14",
+--   black = "#000000",
+--   comment = "#636A72",
+--   constant = "#D2A6FF",
+--   entity = "#59C2FF",
+--   error = "#D95757",
+--   fg = "#BFBDB6",
+--   fg_idle = "#565B66",
+--   func = "#FFB454",
+--   generate = <function 1>,
+--   guide_active = "#3C414A",
+--   guide_normal = "#1E222A",
+--   gutter_active = "#626975",
+--   gutter_normal = "#454B55",
+--   keyword = "#FF8F40",
+--   line = "#11151C",
+--   lsp_inlay_hint = "#969696",
+--   lsp_parameter = "#CB9FF8",
+--   markup = "#F07178",
+--   operator = "#F29668",
+--   panel_bg = "#0F131A",
+--   panel_border = "#000000",
+--   panel_shadow = "#05070A",
+--   regexp = "#95E6CB",
+--   selection_bg = "#1B3A5B",
+--   selection_border = "#304357",
+--   selection_inactive = "#122132",
+--   special = "#E6B673",
+--   string = "#AAD94C",
+--   tag = "#39BAE6",
+--   ui = "#565B66",
+--   vcs_added = "#7FD962",
+--   vcs_added_bg = "#1D2214",
+--   vcs_modified = "#73B8FF",
+--   vcs_removed = "#F26D78",
+--   vcs_removed_bg = "#2D2220",
+--   warning = "#FF8F40",
+--   white = "#FFFFFF"
+-- }

@@ -1,11 +1,12 @@
 local fzf_lua = require('fzf-lua')
 local gitsigns = require('gitsigns')
 local hop = require("hop")
+local drop_bar = require("dropbar.api")
 
 local diagnostic_goto_opts = require('utils').diagnostic_goto_opts
 local toggle_inlay_hints = require('utils').toggle_inlay_hints
 local operation_in_split = require('utils').operation_in_split
-local toggle_window_maximize_equalize = require('utils').toggle_window_maximize_equalize
+local toggle_window_maximize_equalize = require('funcset.toggle_window_maximize_equalize')
 local toggle_diagnostic_virtual_text = require("utils").toggle_diagnostic_virtual_text
 local fzf_lua_opts = require "plugins.fzf-lua".opts
 
@@ -26,57 +27,10 @@ vim.g.maplocalleader = " "
 
 -- Modes
 --   normal_mode = "n",
---   insert_mode = "i", visual_mode = "v",
---   visual_block_mode = "x",
+--   insert_mode = "i", 
+--   visual_mode = "v", visual_block_mode = "x",
 --   term_mode = "t",
 --   command_mode = "c",
-
--- Normal --
--- Aggregate Navigation
--- vim.keymap.set("n", "<C-h>", "<C-w>h", opts_desc())
--- vim.keymap.set("n", "<C-l>", "<C-w>l", opts_desc())
-vim.keymap.set("n", "<C-h>", "<C-w>h", opts_desc())
-vim.keymap.set("n", "<C-l>", "<C-w>l", opts_desc())
-vim.keymap.set("n", "<C-j>", "<C-w>j", opts_desc())
-vim.keymap.set("n", "<C-k>", "<C-w>k", opts_desc())
-
--- quick move
-vim.keymap.set('n', '<A-j>', '10j', opts_desc())
-vim.keymap.set('n', '<A-k>', '10k', opts_desc())
-vim.keymap.set('v', '<A-j>', '10j', opts_desc())
-vim.keymap.set('v', '<A-k>', '10k', opts_desc())
-
--- Window Resize
-vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", opts_desc())
-vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", opts_desc())
-vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", opts_desc())
-vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", opts_desc())
-vim.keymap.set("n", "<leader>z", toggle_window_maximize_equalize, opts_desc("Toggle maximize/equalize window layout"))
-vim.keymap.set("n", "<c-w>h", ":split<CR>", opts_desc("Split window horizontally"))
-
-
-vim.keymap.set("n", "^", 'v%<C-v>', opts_desc()) -- vertical select by match bracket/parentheses/braces
-vim.keymap.set("n", "ge", "gi", opts_desc())  -- go to end of last inserted text
-
--- Stay in indent mode
-vim.keymap.set("v", "<", "<gv", opts_desc())
-vim.keymap.set("v", ">", ">gv", opts_desc())
-vim.keymap.set("v", "<D-c>", '"+y', opts_desc())
-
--- Visual Block --
--- Move text up and down
-vim.keymap.set("x", "J", ":move '>+1<CR>gv-gv", opts_desc())
-vim.keymap.set("x", "K", ":move '<-2<CR>gv-gv", opts_desc())
--- vim.keymap.set("x", "<A-j>", ":move '>+1<CR>gv-gv", opts_desc())
--- vim.keymap.set("x", "<A-k>", ":move '<-2<CR>gv-gv", opts_desc())
-
-vim.keymap.set({ "n", "v", "i" }, "<Del>", "<Nop>", opts_desc()) -- disable <Del> key
--- Terminal --
--- Better terminal navigation
--- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
--- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
--- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
--- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- leader key essential keymaps
 vim.keymap.set("n", "<leader>e", toggle_mini_files, opts_desc("Files Explorer"))
@@ -182,10 +136,53 @@ vim.keymap.set("n", "<leader>ts", "<cmd>StrudelStop<cr>", { desc = "Strudel Stop
 vim.keymap.set("n", "<leader>tb", "<cmd>StrudelSet_buffer<cr>", { desc = "Strudel set current buffer" })
 vim.keymap.set("n", "<leader>tx", "<cmd>StrudelExecute<cr>", { desc = "Strudel set current buffer and update" })
 
--- hop -------
+----------------- hop ----------
 ---@diagnostic disable: missing-parameter
 vim.keymap.set("n", "s", function() hop.hint_char2() end, { remap = true })
 
+---------------- dropbar -----------------
+vim.keymap.set("n", "<leader>;", drop_bar.pick, opts_desc("Pick symbols in dropbar"))
+vim.keymap.set("n", "[[", drop_bar.goto_context_start, opts_desc("go to context start"))
+
+----------------- Editting --------------------
+vim.keymap.set("n", "<C-h>", "<C-w>h", opts_desc())
+vim.keymap.set("n", "<C-l>", "<C-w>l", opts_desc())
+vim.keymap.set("n", "<C-j>", "<C-w>j", opts_desc())
+vim.keymap.set("n", "<C-k>", "<C-w>k", opts_desc())
+
+-- quick move
+vim.keymap.set('n', '<A-j>', '10j', opts_desc())
+vim.keymap.set('n', '<A-k>', '10k', opts_desc())
+vim.keymap.set('v', '<A-j>', '10j', opts_desc())
+vim.keymap.set('v', '<A-k>', '10k', opts_desc())
+
+-- Window Resize
+vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", opts_desc())
+vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", opts_desc())
+vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", opts_desc())
+vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", opts_desc())
+vim.keymap.set("n", "<leader>z", toggle_window_maximize_equalize, opts_desc("Toggle maximize/equalize window layout"))
+vim.keymap.set("n", "<c-w>h", ":split<CR>", opts_desc("Split window horizontally"))
+
+vim.keymap.set("n", "^", 'v%<C-v>', opts_desc()) -- vertical select by match bracket/parentheses/braces
+vim.keymap.set("n", "ge", "gi", opts_desc())  -- Cause 'gi' used for go to implementation, replace 'gi' with 'ge'
+
+-- Stay in indent mode
+vim.keymap.set("v", "<", "<gv", opts_desc())
+vim.keymap.set("v", ">", ">gv", opts_desc())
+vim.keymap.set("v", "<D-c>", '"+y', opts_desc())
+
+-- Visual Block --
+-- Move text up and down
+vim.keymap.set("x", "J", ":move '>+1<CR>gv-gv", opts_desc())
+vim.keymap.set("x", "K", ":move '<-2<CR>gv-gv", opts_desc())
+-- vim.keymap.set("x", "<A-j>", ":move '>+1<CR>gv-gv", opts_desc())
+-- vim.keymap.set("x", "<A-k>", ":move '<-2<CR>gv-gv", opts_desc())
+vim.keymap.set({"n", "x"}, "cp", '"_diw"+P', opts_desc("Replace word with clipboard")) -- copy word under cursor to clipboard
+vim.keymap.set({ "n", "v", "i" }, "<Del>", "<Nop>", opts_desc()) -- disable <Del> key
+-- vim.keymap.set("n", "[j", require("my-addons.api"), opts_desc("Next sibling block"))
+
+------- Disabled default keymaps ----------------
 vim.keymap.del('n', 'grn')
 vim.keymap.del('n', 'gra')
 vim.keymap.del('n', 'grr')

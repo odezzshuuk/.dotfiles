@@ -15,6 +15,6 @@ require "plugins.gitsigns"
 require "plugins.file-outline"
 require "plugins.whichkey"
 require "plugins.copilot"
-require "plugins.functions"
--- require "plugins.strudel"
 require "plugins.strudelPWA"
+
+require "plugins.my-addons"
