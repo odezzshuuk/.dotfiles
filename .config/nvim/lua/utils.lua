@@ -1,13 +1,13 @@
 local M = { }
 local win_layout_state = {}
 
-local function is_normal_window(win_id)
+M.is_normal_window = function(win_id)
   local config = vim.api.nvim_win_get_config(win_id)
   return not config.relative or config.relative == ""
 end
 
 ---@type fun(function):nil
-function M.operation_in_split(operation)
+M.operation_in_split = function(operation)
   -- local function is_normal_window(win)
   --   local available = false
   --   local config = vim.api.nvim_win_get_config(win)
@@ -25,7 +25,7 @@ function M.operation_in_split(operation)
 
   -- search for opened normal split window
   for _, win_id in pairs(wins) do
-    if win_id ~= current_win_id and is_normal_window(win_id) then
+    if win_id ~= current_win_id and M.is_normal_window(win_id) then
       split_win_id = win_id
       break
     end

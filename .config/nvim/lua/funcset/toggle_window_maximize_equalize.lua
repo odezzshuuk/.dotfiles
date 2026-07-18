@@ -1,3 +1,6 @@
+
+local is_normal_window = require("utils").is_normal_window
+
 return function()
   local current_tab = vim.api.nvim_get_current_tabpage()
   local wins = vim.api.nvim_tabpage_list_wins(current_tab)
@@ -20,7 +23,7 @@ return function()
     maximized = true
   end
 
-  if vim.fn.winheight(0) < vim.api.nvim_get_option_value("lines", {}) * 0.95 then
+  if vim.fn.winheight(0) < vim.api.nvim_get_option_value("lines", {}) * 0.9 then
     vim.cmd('wincmd _')
     maximized = true
   end
