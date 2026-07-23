@@ -155,6 +155,7 @@ process_image() {
     local input_file="$1"
     local ext="${input_file##*.}"
     local filename=$(basename "$input_file")
+    local temp_output_path=""
     
     if [[ "$VERBOSE" == true ]]; then
         echo "Processing: $filename" >&2
@@ -162,8 +163,12 @@ process_image() {
     
     # Determine output path
     if [[ "$OUTPUT_DIR" == "$TARGET_DIR" ]] && [[ "$OVERWRITE" == true ]]; then
-        # Overwrite original
-        output_path="$input_file"
+        # ffmpeg cannot use the same file as input and output.
+        temp_output_path=$(mktemp --suffix=".$ext" "$(dirname "$input_file")/.${filename}.resize.XXXXXX") || {
+            echo "  ✗ Failed to create temporary file: $filename" >&2
+            return 1
+        }
+        output_path="$temp_output_path"
     else
         # Save to output directory
         if [[ "$KEEP_ORIGINAL" == true ]]; then
@@ -199,17 +204,28 @@ process_image() {
     cmd="$cmd -y \"$output_path\""
     
     # Execute command
+    local ffmpeg_status
     if [[ "$VERBOSE" == true ]]; then
         echo "  Running: $cmd" >&2
-        eval $cmd 2>&1 | grep -E "(frame|size|time)" || true
+        eval "$cmd" 2>&1 | grep -E "(frame|size|time)" || true
+        ffmpeg_status=${PIPESTATUS[0]}
     else
-        eval $cmd 2>/dev/null
+        eval "$cmd" 2>/dev/null
+        ffmpeg_status=$?
     fi
     
-    if [[ $? -eq 0 ]] && [[ -f "$output_path" ]]; then
+    if [[ $ffmpeg_status -eq 0 ]] && [[ -f "$output_path" ]]; then
+        if [[ -n "$temp_output_path" ]]; then
+            mv -f "$temp_output_path" "$input_file" || {
+                echo "  ✗ Failed to replace: $filename" >&2
+                rm -f "$temp_output_path"
+                return 1
+            }
+        fi
         echo "  ✓ $filename -> $(basename "$output_path")" >&2
         return 0
     else
+        [[ -n "$temp_output_path" ]] && rm -f "$temp_output_path"
         echo "  ✗ Failed: $filename" >&2
         return 1
     fi
