@@ -18,8 +18,12 @@ local fd_exclude =
     .. [[--exclude '*.png' ]]
     .. [[--exclude '*.psd' ]]
     .. [[--exclude '*.zip' ]]
+    .. [[--exclude '*.glb' ]]
+    .. [[--exclude '*.gltf' ]]
     .. [[--exclude '.next/' ]]
     .. [[--exclude '__pycache__/' ]]
+    .. [[--exclude '*.blend' ]]
+    .. [[--exclude '*.blend1' ]]
 
     -- unity
     .. [[--exclude 'Temp/' ]]
@@ -30,6 +34,10 @@ local fd_exclude =
     .. [[--exclude '*.asset' ]]
     .. [[--exclude '*.fbx' ]]
     .. [[--exclude '*.controller' ]]
+
+    -- godot
+    .. [[--exclude '*.import' ]]
+    .. [[--exclude '*.uid' ]]
 
 local workspace_path = vim.fn.getcwd()
 local rg_include =
