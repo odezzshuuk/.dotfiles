@@ -144,6 +144,7 @@ vim.keymap.set("n", "s", function() hop.hint_char2() end, { remap = true })
 vim.keymap.set("n", "<leader>;", drop_bar.pick, opts_desc("Pick symbols in dropbar"))
 vim.keymap.set("n", "[[", drop_bar.goto_context_start, opts_desc("go to context start"))
 vim.keymap.set("n", "[j", drop_bar.select_next_context, opts_desc("go to next context"))
+vim.keymap.set("n", "]]", require("my-addons.api").go_outer_end, opts_desc("go to context end"))
 
 ----------------- Editting --------------------
 vim.keymap.set("n", "<C-h>", "<C-w>h", opts_desc())

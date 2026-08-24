@@ -40,9 +40,7 @@ local fd_exclude =
     .. [[--exclude '*.uid' ]]
 
 local workspace_path = vim.fn.getcwd()
-local rg_include =
-    [[ .github ]]
-
+local rg_include = [[ .github ]]
 local git_status_exclude = [["\.(meta|unity|prefab|asset|fbx|controller|xsd)$"]]
 
 local opts = {
