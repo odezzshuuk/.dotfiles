@@ -367,9 +367,11 @@ local opts = {
     },
     status = {
       prompt       = 'GitStatus❯ ',
-      cmd          = [[git -c color.status=false --no-optional-locks status --porcelain=v1 -u | grep -Ev ]] .. git_status_exclude
-      .. [[; git submodule foreach --quiet --recursive 'git -c color.status=false --no-optional-locks status --porcelain=v1 -u | awk -v path="$displaypath" "{print substr(\$0,1,2) \" \" path \"/\" substr(\$0,4)}"' | grep -Ev ]] -- concatenate workspace path to submodule git status
-        .. git_status_exclude,
+      cmd          = [[git -c color.status=false --no-optional-locks status --porcelain=v1 -u | grep -Ev ]] ..
+          git_status_exclude
+          ..
+          [[; git submodule foreach --quiet --recursive 'git -c color.status=false --no-optional-locks status --porcelain=v1 -u | awk -v path="$displaypath" "{print substr(\$0,1,2) \" \" path \"/\" substr(\$0,4)}"' | grep -Ev ]] -- concatenate workspace path to submodule git status
+          .. git_status_exclude,
 
       multiprocess = true, -- run command in a separate process
       file_icons   = true,
@@ -384,8 +386,8 @@ local opts = {
         ["left"]   = { fn = actions.git_stage, reload = true },
         ["ctrl-x"] = { fn = actions.git_reset, reload = true },
       },
-      fzf_opts = {
-        ["--keep-right"]     = true,
+      fzf_opts     = {
+        ["--keep-right"] = true,
         -- ["--margin"]         = "0,1,0,0",
       },
       -- If you wish to use a single stage|unstage toggle instead
@@ -398,7 +400,7 @@ local opts = {
       -- },
     },
     diff = {
-      prompt = 'Diff❯ ',
+      prompt      = 'Diff❯ ',
       cmd         = "git --no-pager diff --name-only {ref}",
       ref         = "HEAD",
       preview     = "git diff {ref} {file}",
@@ -409,17 +411,17 @@ local opts = {
       fzf_opts    = { ["--multi"] = true },
     },
     hunks = {
-      prompt  = 'Hunks❯ ',
+      prompt      = 'Hunks❯ ',
       cmd         = "git --no-pager diff --color=always {ref}",
       ref         = "HEAD",
       file_icons  = true,
       color_icons = true,
       fzf_opts    = {
-        ["--multi"]          = true,
-        ["--delimiter"]      = ":",
-        ["--nth"]            = "3..",
+        ["--multi"]      = true,
+        ["--delimiter"]  = ":",
+        ["--nth"]        = "3..",
 
-        ["--keep-right"]     = true,
+        ["--keep-right"] = true,
       },
     },
     commits = {
@@ -515,13 +517,14 @@ local opts = {
     -- otherwise auto-detect prioritizes `rg` over `grep`
     -- default options are controlled by 'rg|grep_opts'
     -- cmd            = "rg --vimgrep",
-    rg_opts        = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 --ignore-file ~/.config/nvim/rg-white-list -e",
+    rg_opts        =
+    "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 --ignore-file ~/.config/nvim/rg-white-list -e",
     grep_opts      = "--binary-files=without-match --line-number --recursive --color=auto --perl-regexp -e --no-require-git",
     -- set to 'true' to always parse globs in both 'grep' and 'live_grep'
     -- search strings will be split using the 'glob_separator' and translated
     -- to '--iglob=' arguments, requires 'rg'
     -- can still be used when 'false' by calling 'live_grep_glob' directly
-    rg_glob        = true,     -- default to glob parsing?
+    rg_glob        = true,      -- default to glob parsing?
     glob_flag      = "--iglob", -- for case sensitive globs use '--glob'
     glob_separator = "%s%-%-",  -- query separator pattern (lua): ' --'
     -- advanced usage: for custom argument parsing define
@@ -832,23 +835,6 @@ local opts = {
       },
     },
 
-    -- not work, but suppose to work
-    -- has to manually pass to reference function
-    references         = {
-      fzf_opts = {
-        ["--ansi"]           = true,
-        ["--info"]           = "inline-right", -- fzf < v0.42 = "inline"
-        ["--height"]         = "100%",
-        ["--layout"]         = "reverse",
-        ["--border"]         = "none",
-        ["--highlight-line"] = true, -- fzf >       = v0.53
-
-        ["--delimiter"]      = ":",
-        ["--with-nth"]       = "1",
-        ["--keep-right"]     = true,
-        ["--margin"]         = "0,1,0,0",
-      }
-    },
   },
   diagnostics          = {
     prompt         = 'Diagnostics❯ ',
@@ -920,14 +906,19 @@ require('fzf-lua').setup(opts)
 vim.schedule(function() vim.cmd('FzfLua register_ui_select') end)
 
 return {
-  -- temporary solution for lsp references with fzf commands
-  fzf_lua_references_with_opts = function()
-    fzf_lua.lsp_references(opts.lsp.references)
-  end,
+  lsp_general_opts = {
+    fzf_opts = {
+      ["--ansi"]           = true,
+      ["--info"]           = "inline-right",   -- fzf < v0.42 = "inline"
+      ["--height"]         = "100%",
+      ["--layout"]         = "reverse",
+      ["--border"]         = "none",
+      ["--highlight-line"] = true,   -- fzf >       = v0.53
 
-  fzf_lua_implementations_with_opts = function()
-    fzf_lua.lsp_implementations(opts.lsp.references)
-  end,
-
-  opts = opts
+      ["--delimiter"]      = ":",
+      ["--with-nth"]       = "1",
+      ["--keep-right"]     = true,
+      ["--margin"]         = "0,1,0,0",
+    }
+  }
 }

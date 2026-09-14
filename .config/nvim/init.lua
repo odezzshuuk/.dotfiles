@@ -11,7 +11,6 @@ else
   -- require "config.commands"
   -- require "config.auto-commands"
   -- require "config.lsp"
-
   require "auto-commands"
   require "add-plugins"
   require "plugins"

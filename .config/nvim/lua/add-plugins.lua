@@ -94,9 +94,6 @@ vim.pack.add({
   -- Debugger
   { src = "https://github.com/mfussenegger/nvim-dap", },
 
-  -- tmux seamless
-  { src = "https://github.com/christoomey/vim-tmux-navigator", },
-
   -- strudel
   -- { src = "https://github.com/gruvw/strudel.nvim" },
 
