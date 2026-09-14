@@ -81,5 +81,7 @@ blender/*/config/*
 !fuzzel/
 !fuzzel/**
 
+!noctalia/
+!noctalia/config.toml
 
 !.fdignore

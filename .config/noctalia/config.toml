@@ -1,0 +1,11 @@
+[bar.default]
+start = [ "launcher", "clock", "wallpaper", "network", "brightness", "battery", "volume", "bluetooth" ]
+center = [ "workspaces", "cpu", "ram" ]
+end = [ "media", "tray", "notifications", "clipboard", "control-center", "session" ]
+
+[bar.default.monitor.edp1]
+match = "DP-1"
+enabled = false
+
+[widget.tray]
+drawer = true
