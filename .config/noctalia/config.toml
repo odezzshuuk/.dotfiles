@@ -1,11 +1,50 @@
 [bar.default]
-start = [ "launcher", "clock", "wallpaper", "network", "brightness", "battery", "volume", "bluetooth" ]
-center = [ "workspaces", "cpu", "ram" ]
+start = [
+    "launcher",
+    "clock",
+    "wallpaper",
+    "network",
+    "network_tx",
+    "network_rx",
+    "brightness",
+    "battery",
+    "volume",
+    "bluetooth"
+]
+center = [ "workspaces", "cpu", "temp", "ram", "sysmon" ]
 end = [ "media", "tray", "notifications", "clipboard", "control-center", "session" ]
 
 [bar.default.monitor.edp1]
 match = "DP-1"
 enabled = false
 
+[widget.sysmon]
+stat = "swap_pct"
+
+[widget.cpu]
+visualization = "graph"
+
 [widget.tray]
 drawer = true
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+
+[idle.behavior.lock]
+action = "lock"
+enabled = false
+timeout = 900.0
+
+[idle.behavior.lock-and-suspend]
+action = "lock_and_suspend"
+enabled = false
+timeout = 1500.0
+
+[idle.behavior.screen-off]
+action = "screen_off"
+enabled = false
+locked_timeout = 300.0
+timeout = 0.0
+
+[theme]
+source = "wallpaper"

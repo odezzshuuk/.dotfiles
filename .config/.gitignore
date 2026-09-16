@@ -84,4 +84,7 @@ blender/*/config/*
 !noctalia/
 !noctalia/config.toml
 
+!tmux-powerline/
+!tmux-powerline/**
+
 !.fdignore

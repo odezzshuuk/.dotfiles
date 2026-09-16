@@ -33,10 +33,6 @@
 !.local/bin/
 !.local/bin/**
 
-# .tmux directory
-!.tmux/
-!.tmux/**
-
 !.copilot/
 !.copilot/skills/
 
