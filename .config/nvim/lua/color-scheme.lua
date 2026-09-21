@@ -24,6 +24,7 @@ local colors_overwrite = {
   LineNr          = { fg = "#626975" },
   WinSeparator    = { fg = "#73f8b1" },
   WinBar          = { bg = mini_palette.bg_mid },
+  CursorLine      = { bg = "#1f272f" },
 
   FloatBorder     = { fg = "#fda339", bg = mini_palette.bg_edge },
   NormalFloat     = { bg = mini_palette.bg_mid},

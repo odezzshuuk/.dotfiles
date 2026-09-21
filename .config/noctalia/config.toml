@@ -13,6 +13,7 @@ start = [
 ]
 center = [ "workspaces", "cpu", "temp", "ram", "sysmon" ]
 end = [ "media", "tray", "notifications", "clipboard", "control-center", "session" ]
+padding = 10
 
 [bar.default.monitor.edp1]
 match = "DP-1"
