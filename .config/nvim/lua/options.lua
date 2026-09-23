@@ -27,7 +27,7 @@ vim.opt.splitbelow      = true
 vim.opt.splitright      = true
 vim.opt.showtabline     = 0
 vim.opt.timeout         = true
-vim.opt.timeoutlen      = 500
+vim.opt.timeoutlen      = 750
 vim.opt.list            = false
 vim.opt.listchars       = {
   tab                   = "▸ ",
@@ -43,6 +43,7 @@ vim.opt.spelllang       = "en_us"
 vim.opt.clipboard       = "unnamedplus"
 -- vim.opt.spell           = true
 -- vim.opt.spellfile       = vim.fn.getcwd() .. '/en.utf-8.add'
+vim.opt.updatetime      = 500
 
 -- Undercurl(not work on alacritty)
 vim.cmd([[let &t_Cs = "\e[4:3m"]])

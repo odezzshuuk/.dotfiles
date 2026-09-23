@@ -16,5 +16,6 @@ require "plugins.file-outline"
 require "plugins.whichkey"
 require "plugins.copilot"
 require "plugins.strudelPWA"
+require "plugins.dropbar"
 
 require "plugins.my-addons"

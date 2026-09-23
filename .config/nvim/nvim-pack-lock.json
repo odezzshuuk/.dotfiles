@@ -156,6 +156,10 @@
       "rev": "2795c26c916bb3c57dde308b82be51971fa92747",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
+    "onedarkpro.nvim": {
+      "rev": "24c806cb85c1f84d9faaff457cf7aa87c685a070",
+      "src": "https://github.com/olimorris/onedarkpro.nvim"
+    },
     "outline.nvim": {
       "rev": "c293eb56db880a0539bf9d85b4a27816960b863e",
       "src": "https://github.com/hedyhli/outline.nvim"

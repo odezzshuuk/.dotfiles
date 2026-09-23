@@ -183,7 +183,7 @@ vim.keymap.set({"n", "x"}, "cp", '"_diw"+P', opts_desc("Replace word with clipbo
 vim.keymap.set({ "n", "v", "i" }, "<Del>", "<Nop>", opts_desc()) -- disable <Del> key
 -- vim.keymap.set("n", "[j", require("my-addons.api"), opts_desc("Next sibling block"))
 
-vim.keymap.set("n", "*", "*#", opts_desc()) -- search word under cursor and stay in normal mode
+vim.keymap.set("n", "*", "#*", opts_desc()) -- search word under cursor and stay in normal mode
 
 ------- Disabled default keymaps ----------------
 vim.keymap.del('n', 'grn')

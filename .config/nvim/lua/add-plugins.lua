@@ -25,6 +25,7 @@ vim.pack.add({
   { src = "https://github.com/scottmckendry/cyberdream.nvim" },
   { src = "https://github.com/folke/tokyonight.nvim" },
   { src = "https://github.com/Shatur/neovim-ayu", },
+  { src = "https://github.com/olimorris/onedarkpro.nvim", },
 
   "https://github.com/HiPhish/rainbow-delimiters.nvim",
 

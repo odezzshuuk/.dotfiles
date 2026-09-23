@@ -8,13 +8,12 @@
 -- })
 -- require('onedark').load()
 
-require('ayu').setup({
-  overrides = {
-    -- Normal = { bg = "None" }
-  }
-})
 
-vim.cmd('colorscheme ayu-dark')
+-- vim.cmd('colorscheme ayu-dark')
+-- vim.cmd('colorscheme onedark')
+-- vim.cmd('colorscheme onedark_vivid')
+vim.cmd('colorscheme onedark_dark')
+-- vim.cmd('colorscheme vaporwave')
 local mini_palette = require('plugins.mini').palette
 local ayu_palette = require('ayu.colors').generate()
 
@@ -25,6 +24,7 @@ local colors_overwrite = {
   WinSeparator    = { fg = "#73f8b1" },
   WinBar          = { bg = mini_palette.bg_mid },
   CursorLine      = { bg = "#1f272f" },
+  Search          = { bg = "#f1611c", fg = "#e3e3e3" },
 
   FloatBorder     = { fg = "#fda339", bg = mini_palette.bg_edge },
   NormalFloat     = { bg = mini_palette.bg_mid},
@@ -40,8 +40,8 @@ local colors_overwrite = {
   DiffText   = { fg = nil, bg = mini_palette.yellow_bg },
 
   --lsp
-  LspReferenceRead = { bg = "#2c2c0c" },
-  LspReferenceText = { bg = "#2c2c0c" },
+  LspReferenceRead = { bg = "#0cf1cc", fg = "#0a140c" },
+  LspReferenceText = { bg = "#0cf1cc", fg = "#0a140c" },
 
   --- FzfLua
   FzfLuaNormal                = { fg = mini_palette.fg_edge, bg = mini_palette.bg_edge2 },
