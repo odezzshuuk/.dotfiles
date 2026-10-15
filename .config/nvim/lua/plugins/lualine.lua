@@ -1,8 +1,8 @@
-local lualine = require("lualine")
-local palette = require("plugins.mini").palette
+local lualine = require('lualine')
+local palette = require('plugins.mini').palette
 
 local show_in_width = function()
-  return vim.fn.winwidth(0) > vim.api.nvim_get_option_value("columns", {}) * 0.6
+  return  vim.fn.winwidth(0) > 135
 end
 
 local git_hash_suffix = "%[([0-9a-fA-F]+)%]$"
