@@ -1,5 +1,3 @@
-require('my-addons').setup({
-
-})
+require('my-addons').setup({})
 
 

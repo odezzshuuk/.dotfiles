@@ -16,7 +16,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     if client.server_capabilities.documentHighlightProvider then
-      local group = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = true })
+      local group = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = false })
 
       vim.api.nvim_create_autocmd("CursorMoved", {
         group = group,

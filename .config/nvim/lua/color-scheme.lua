@@ -78,6 +78,7 @@ local colors_overwrite = {
 
   --- mini.files ---
   MiniFilesCursorLine         = { fg = "#0a141c", bg="#ff72aa", bold = true },
+
 }
 
 -- vim.api.nvim_set_hl(0, "WhichKeyFloat", { bg = palette.bg_mid })
@@ -85,6 +86,8 @@ local colors_overwrite = {
 for hl, col in pairs(colors_overwrite) do
   vim.api.nvim_set_hl(0, hl, col)
 end
+
+vim.api.nvim_set_hl(0, "@comment.todo", { fg = "#61afef", bold = true, italic = true })
 
 -- {
 --   accent = "#E6B450",

@@ -1,7 +1,7 @@
 local fzf_lua = require "fzf-lua"
 local actions = require "fzf-lua.actions"
 
-local fd_exclude =
+local files_fd_exclude =
     [[--exclude '.git/' ]] .. [[--exclude node_modules/ ]]
     .. [[--exclude 'cache/' ]]
     .. [[--exclude '*.cache' ]]
@@ -39,7 +39,7 @@ local fd_exclude =
     .. [[--exclude '*.import' ]]
     .. [[--exclude '*.uid' ]]
 
-local workspace_path = vim.fn.getcwd()
+
 local rg_include = [[ .github ]]
 local git_status_exclude = [["\.(meta|unity|prefab|asset|fbx|controller|xsd)$"]]
 
@@ -330,7 +330,7 @@ local opts = {
     -- default options are controlled by 'fd|rg|find|_opts'
     -- NOTE: 'find -printf' requires GNU find
     -- cmd            = "find . -type f -printf '%P\n'",
-    fd_opts                = [[--color=never --type f --hidden --follow ]] .. fd_exclude,
+    fd_opts                = [[--color=never --type f --hidden --follow ]] .. files_fd_exclude,
     rg_opts                = [[--color=never --files --hidden --follow -g "!.git"]],
     find_opts              = [[-type f -not -path '*/\.git/*' -printf '%P\n']],
     -- by default, cwd appears in the header only if {opts} contain a cwd
@@ -905,7 +905,10 @@ local opts = {
 require('fzf-lua').setup(opts)
 vim.schedule(function() vim.cmd('FzfLua register_ui_select') end)
 
+local lsp_fd_exclude = [[--exclude 'roslyn-source-generated*']]
+
 return {
+  -- TODO: Implement ignore file prefix with"roslyn-source-generated"
   lsp_general_opts = {
     fzf_opts = {
       ["--ansi"]           = true,
@@ -919,6 +922,6 @@ return {
       ["--with-nth"]       = "1",
       ["--keep-right"]     = true,
       ["--margin"]         = "0,1,0,0",
-    }
+    },
   }
 }
