@@ -423,20 +423,25 @@ on   = "l"
 run  = "plugin smart-enter"
 desc = "Enter the child directory, or open the file"
 
-# Copy yanked files to the system clipboard
 [[mgr.prepend_keymap]]
 on  = "y"
-run = [ "yank", 'plugin clipboard -- --action=copy' ]
-desc = "Yank selected files (copy)"
+run = [ 'shell -- for path in %s; do echo "file://$path"; done | wl-copy -t text/uri-list',  "yank" ]
+desc = "Yank selected files (copy) and copy the file URI to the clipboard"
 
-# Keep behaviour consistent with cut
-[[mgr.prepend_keymap]]
-on  = "x"
-run = [ "yank --cut", 'plugin clipboard -- --action=copy' ]
-desc = "Yank selected files (cut)"
+# Copy yanked files to the system clipboard
+# [[mgr.prepend_keymap]]
+# on  = "y"
+# run = [ "yank", 'plugin clipboard -- --action=copy' ]
+# desc = "Yank selected files (copy)"
+#
+# # Keep behaviour consistent with cut
+# [[mgr.prepend_keymap]]
+# on  = "x"
+# run = [ "yank --cut", 'plugin clipboard -- --action=copy' ]
+# desc = "Yank selected files (cut)"
 
-# Paste files from the system clipboard into the current directory
+# Paste the text/uri-list written by the y binding via wl-copy.
 [[mgr.prepend_keymap]]
-on  = "<C-p>"
-run = [ 'plugin clipboard -- --action=paste' ]
-desc = "Paste yanked system clipboard files"
+on  = "p"
+run = "plugin clipboard -- --action=paste"
+desc = "Paste files from the system clipboard"

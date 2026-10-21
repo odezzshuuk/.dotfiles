@@ -5,9 +5,8 @@ fish_vi_key_bindings insert
 set -gx EDITOR nvim
 set -gx XDG_CONFIG_HOME $HOME/.config
 
-set -gx PATH bin $PATH
-set -gx PATH ~/bin $PATH
-set -gx PATH ~/.local/bin $PATH
+fish_add_path ~/.local/bin/
+fish_add_path ~/.local/bin/blender-workflow/
 
 source ~/.config/lf/lfcd.fish
 

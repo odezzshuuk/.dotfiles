@@ -44,6 +44,8 @@ local rg_include = [[ .github ]]
 local git_status_exclude = [["\.(meta|unity|prefab|asset|fbx|controller|xsd)$"]]
 
 local opts = {
+  -- fzf-lua splits at ':' before matching, so omit the URI scheme's colon.
+  -- file_ignore_patterns = { 'roslyn%-source%-generated' },
   -- fzf_bin         = 'sk',            -- use skim instead of fzf?
   -- https://github.com/lotabout/skim
   -- can also be set to 'fzf-tmux'
@@ -902,14 +904,20 @@ local opts = {
   -- nbsp = '\xc2\xa0',
 }
 
+-- Hide Roslyn's generated-source buffers from the picker.
+for _, picker in ipairs({'buffers', 'tabs', 'lines', 'blines' }) do
+  opts[picker].filter = function(bufnr)
+      return not vim.startswith(vim.api.nvim_buf_get_name(bufnr), 'roslyn-source-generated:')
+  end
+end
+
 require('fzf-lua').setup(opts)
 vim.schedule(function() vim.cmd('FzfLua register_ui_select') end)
 
-local lsp_fd_exclude = [[--exclude 'roslyn-source-generated*']]
-
 return {
-  -- TODO: Implement ignore file prefix with"roslyn-source-generated"
   lsp_general_opts = {
+    -- ignore Roslyn's generated-source buffers from the picker.
+    file_ignore_patterns = { 'roslyn%-source%-generated' },
     fzf_opts = {
       ["--ansi"]           = true,
       ["--info"]           = "inline-right",   -- fzf < v0.42 = "inline"

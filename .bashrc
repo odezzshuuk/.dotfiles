@@ -1,7 +1,7 @@
 #
 # ~/.bashrc
 #
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin/:$HOME/.local/bin/blender-workflow/"
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
