@@ -951,6 +951,5 @@ function M.eval(opt, ...)
   return opt
 end
 
-vim.print(vim.inspect(M.opts.menu.win_configs.height))
 require("dropbar").setup(M)
 
