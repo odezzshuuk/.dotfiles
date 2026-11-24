@@ -112,5 +112,5 @@ text=$(< "$temp_dir/input.txt")
 
 # Background commands receive /dev/null on stdin unless explicitly redirected.
 # Give Piper the input file directly so toggling does not discard its text.
-run_command piper --model "$model" --input-file "$temp_dir/input.txt" --output-file "$temp_dir/speech.wav"
+run_command piper --model "$model" --input-file "$temp_dir/input.txt" --output-file "$temp_dir/speech.wav"  --volume 0.2
 run_command "${player[@]}" "$temp_dir/speech.wav"
