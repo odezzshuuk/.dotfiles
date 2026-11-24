@@ -3,14 +3,10 @@ set -euo pipefail
 
 usage() {
     cat <<'HELP'
-Usage: batch_export_tools.sh (--model | --image) [--selected-only] [--on-exists POLICY] INPUT.blend OUTPUT_DIR
+Usage: batch_export_images.sh [--on-exists POLICY] INPUT.blend OUTPUT_DIR
 
-Export models or all images to OUTPUT_DIR. Choose exactly one mode.
-  --model         Export visible meshes as GLB files without materials or textures.
-  --image         Export all images as PNG files.
-  --selected-only  Models only: use the saved selection; ignored for images.
-  --on-exists POLICY  overwrite, number, or stop.
-                      Default: prompt for models; stop for images.
+Export all images as PNG files to OUTPUT_DIR.
+  --on-exists POLICY  overwrite, number, or stop. Default: stop.
   -h, --help       Show this help.
 
 Quote paths containing spaces. Relative paths are resolved from your current directory.
@@ -19,25 +15,12 @@ Set BLENDER_BIN to override the default Steam Blender executable.
 HELP
 }
 
-export_script=""
 positional=()
-selection_args=()
 exists_args=()
 
-# Collect the export mode and options to forward to the Python exporter.
+# Collect paths and options to forward to the Python exporter.
 while (($#)); do
     case "$1" in
-        --model|--image)
-            if [[ -n "$export_script" ]]; then
-                printf 'Choose exactly one of --model or --image.\n' >&2
-                exit 2
-            fi
-            case "$1" in
-                --model) export_script="batch_export_models.py" ;;
-                --image) export_script="batch_export_images.py" ;;
-            esac
-            shift ;;
-        --selected-only|--select-only) selection_args=(--selected-only); shift ;;
         --on-exists)
             if (($# < 2)); then
                 printf 'Expected overwrite, number, or stop after --on-exists.\n' >&2
@@ -57,12 +40,6 @@ if ((${#exists_args[@]})); then
         overwrite|number|stop) ;;
         *) printf 'Invalid --on-exists policy: %s\n' "${exists_args[1]}" >&2; exit 2 ;;
     esac
-fi
-
-if [[ -z "$export_script" ]]; then
-    printf 'Choose exactly one of --model or --image.\n' >&2
-    usage >&2
-    exit 2
 fi
 
 if ((${#positional[@]} != 2)); then
@@ -101,5 +78,5 @@ fi
 
 # Run the selected exporter in a disposable background Blender process.
 exec "$blender_bin" --background --disable-autoexec --python-exit-code 1 \
-    --python "$script_dir/$export_script" -- \
-    "$blend_file" "$output_dir" "${selection_args[@]}" "${exists_args[@]}"
+    --python "$script_dir/batch_export_images.py" -- \
+    "$blend_file" "$output_dir" "${exists_args[@]}"

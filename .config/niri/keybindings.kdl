@@ -19,7 +19,8 @@ binds {
     Mod+Shift+Space hotkey-overlay-title="Run an Application" { spawn-sh "rofi -show drun"; }
     Mod+Space hotkey-overlay-title="Find a window" { spawn-sh "rofi -show window -matching fuzzy -sort"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock --grace 5"; }
-    Mod+I hotkey-overlay-title="Speech to text application" { spawn-sh "handy-minimal --toggle-transcription"; }
+    Mod+Ctrl+I hotkey-overlay-title="Speech to text application" { spawn-sh "handy-minimal --toggle-transcription"; }
+    Mod+Ctrl+O hotkey-overlay-title="Read out loud the clipboard" { spawn-sh "clipboard-tts.sh"; }
 
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
@@ -113,10 +114,6 @@ binds {
 
     Mod+Page_Down      { focus-workspace-down; }
     Mod+Page_Up        { focus-workspace-up; }
-    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
-    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
-    Mod+Ctrl+U         { move-column-to-workspace-down; }
-    Mod+Ctrl+I         { move-column-to-workspace-up; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }

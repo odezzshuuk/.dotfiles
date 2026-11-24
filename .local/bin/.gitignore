@@ -1,0 +1,24 @@
+# Include only the scripts maintained in the dotfiles repository.
+/*
+!/.gitignore
+!/batch_add_prefix.sh
+!/batch_rename.sh
+!/batch_resize_images.sh
+!/clipboard-tts.sh
+!/cpcolor
+!/fzf_change_directory
+!/http_monitor
+!/hyprpaper_random.sh
+!/snipping
+!/swaybg_random.sh
+!/wallpaper_batch_convert.sh
+
+!/blender-workflow/
+/blender-workflow/*
+!/blender-workflow/.gitignore
+!/blender-workflow/batch_export_images.py
+!/blender-workflow/batch_export_images.sh
+!/blender-workflow/batch_export_models.py
+!/blender-workflow/batch_export_models.sh
+!/blender-workflow/batch_export_tools.sh
+!/blender-workflow/export_common.py

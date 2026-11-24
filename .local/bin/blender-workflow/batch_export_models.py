@@ -1,4 +1,4 @@
-"""Export individual meshes without materials from a .blend file in background Blender."""
+"""Export individual meshes with optional materials from a .blend file in background Blender."""
 
 from __future__ import annotations
 
@@ -22,6 +22,7 @@ ExportFormat: TypeAlias = Literal["gltf", "glb"]
 
 
 class ExportArgs(CommonExportArgs):
+    mesh_only: bool
     format: ExportFormat
     on_exists: ConflictPolicy | None
 
@@ -33,6 +34,8 @@ def parse_args(argv: Sequence[str] | None = None) -> ExportArgs:
     )
     add_export_arguments(parser, "_exports", prompt=True)
     parser.add_argument("--format", choices=("gltf", "glb"), default="glb")
+    parser.add_argument("--mesh-only", action="store_true",
+                        help="Omit materials and textures from exported meshes.")
     return parser.parse_args(blender_args(argv), namespace=ExportArgs())
 
 
@@ -153,13 +156,13 @@ def export_models(args: ExportArgs) -> None:
                 view_layer.objects.active = obj
                 try:
 
-                    # Write the selected mesh without embedding materials.
+                    # Write the selected mesh with the requested material policy.
                     result = bpy.ops.export_scene.gltf(
                         filepath=str(filepath),
                         check_existing=False,
                         export_format='GLTF_SEPARATE' if args.format == "gltf" else 'GLB',
                         use_selection=True,
-                        export_materials='NONE',
+                        export_materials='NONE' if args.mesh_only else 'EXPORT',
                     )
                 except RuntimeError as error:
                     raise ExportError(f"Could not export {obj.name}: {error}") from error
