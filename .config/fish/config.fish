@@ -31,13 +31,10 @@ if type -q Unity\ Hub
 end
 
 # for mode in (bind -L)
-#     bind -M $mode ctrl-r fzf_command_history # Bind for peco select history to Ctrl+R
 #     bind -M $mode ctrl-f fzf_change_directory # Bind for peco change directory to Ctrl+F
 # end
 # bind for insert and default mode 
-bind -M insert ctrl-r fzf_command_history
 bind -M insert ctrl-f fzf_change_directory
-bind ctrl-r fzf_command_history
 bind ctrl-f fzf_change_directory
 # bind ctrl-s fish_test
 
@@ -45,7 +42,8 @@ bind ctrl-f fzf_change_directory
 bind -M insert ctrl-space 'forward-char'
 
 if status is-interactive
-    # Commands to run in interactive sessions can go here
+    set -gx FZF_CTRL_R_OPTS "--with-nth 3.. --bind 'alt-t:change-with-nth(2..|1,3..|3..)'"
+    fzf --fish | FZF_CTRL_T_COMMAND= FZF_ALT_C_COMMAND= source
 end
 
 stty discard undef
